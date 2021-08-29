@@ -9,32 +9,50 @@ class WelcomeText extends StatefulWidget {
 
 class _WelcomeTextState extends State<WelcomeText> {
   Duration _animationSpeed;
-  double _opacity;
+  double _opacity, _opacity2;
   EdgeInsets _padding;
 
   @override
   void initState() {
     super.initState();
     _opacity = 0.0;
-    _animationSpeed = Duration(milliseconds: 666);
-    _padding = EdgeInsets.only(top: 33);
+    _opacity2 = 0.0;
+    _animationSpeed = Duration(milliseconds: 750);
+    _padding = EdgeInsets.only(top: 15);
 
     animationController();
   }
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedOpacity(
-      opacity: _opacity,
-      duration: _animationSpeed,
-      child: AnimatedPadding(
+    return Column(
+      children: [
+        AnimatedOpacity(
+          opacity: _opacity,
           duration: _animationSpeed,
-          padding: _padding,
-          child: Text("Welcome",
-              style: GoogleFonts.oswald(
-                  color: kSecondaryColor,
+          child: AnimatedPadding(
+              duration: _animationSpeed,
+              padding: _padding,
+              child: Text("welcome",
+                  style: GoogleFonts.ubuntu(
+                      color: kSecondaryColor,
+                      fontWeight: FontWeight.w800,
+                      fontSize: 66))),
+        ),
+        SizedBox(
+          height: 15,
+        ),
+        Center(
+            child: AnimatedOpacity(
+          opacity: _opacity2,
+          duration: _animationSpeed,
+          child: Text("By the wey, What do your friends call you?",
+              style: GoogleFonts.ubuntu(
+                  color: kSecondaryColor.withOpacity(0.85),
                   fontWeight: FontWeight.w800,
-                  fontSize: 66))),
+                  fontSize: 15)),
+        )),
+      ],
     );
   }
 
@@ -44,10 +62,9 @@ class _WelcomeTextState extends State<WelcomeText> {
       _opacity = 1.0;
       _padding = EdgeInsets.zero;
     });
-    await Future.delayed(Duration(milliseconds: 2000));
+    await Future.delayed(Duration(milliseconds: 1250));
     setState(() {
-      _opacity = 0.0;
-      _padding = EdgeInsets.only(top: 33);
+      _opacity2 = 1.0;
     });
   }
 }

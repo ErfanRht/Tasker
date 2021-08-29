@@ -37,6 +37,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
               children: [
                 SizedBox(),
                 LoadingLogo(),
+                SizedBox(),
                 LoadingSpinkit(),
               ],
             )));

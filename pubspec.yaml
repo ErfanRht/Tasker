@@ -16,6 +16,7 @@ dependencies:
   kf_drawer: ^1.2.0
   introduction_screen: ^2.1.0
   flutter_spinkit: ^5.1.0
+  rounded_loading_button: ^2.0.5
 
 dev_dependencies:
   flutter_test:

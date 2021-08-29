@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo/constants/colors.dart';
+import 'package:todo/controllers/controller.dart';
 
 class WelcomeName extends StatefulWidget {
   @override
@@ -27,35 +29,50 @@ class _WelcomeNameState extends State<WelcomeName> {
     return AnimatedOpacity(
       opacity: _opacity,
       duration: _animationSpeed,
-      child: AnimatedPadding(
-        duration: _animationSpeed,
-        padding: _padding,
-        child: SizedBox(
-          width: MediaQuery.of(context).size.width - 100,
-          child: Column(
-            children: [
-              Text("What's your name?",
-                  style: GoogleFonts.ubuntu(
-                      color: kSecondaryColor,
-                      fontSize: 30,
-                      fontWeight: FontWeight.w700)),
-              TextField(
-                  textAlign: TextAlign.center,
-                  maxLength: 25,
-                  style: GoogleFonts.workSans(
-                      color: kSecondaryColor, fontWeight: FontWeight.w700),
-                  cursorColor: kSecondaryColor,
-                  cursorHeight: 25,
-                  decoration: InputDecoration(
-                    border: UnderlineInputBorder(
-                        borderSide: BorderSide(color: kSecondaryColor)),
-                    counterText: '',
-                    hintText: "What's your name? ",
-                  ),
-                  onTap: () {}),
-            ],
-          ),
+      child: Container(
+        padding: EdgeInsets.only(
+          left: 20,
+          right: 20,
+          top: 10,
         ),
+        width: MediaQuery.of(context).size.width - 80,
+        height: 80,
+        decoration: BoxDecoration(
+          color: kSecondaryColor.withOpacity(0.75),
+          borderRadius: BorderRadius.circular(17.5),
+          boxShadow: [
+            BoxShadow(
+              color: kSecondaryColor.withOpacity(0.1),
+              blurRadius: 10,
+              spreadRadius: 5,
+            ),
+          ],
+        ),
+        child: TextField(
+            textAlign: TextAlign.center,
+            maxLength: 25,
+            style: GoogleFonts.ubuntu(
+                color: Colors.white,
+                fontSize: 25,
+                fontWeight: FontWeight.w700,
+                decorationColor: Colors.white),
+            cursorColor: Colors.white,
+            cursorHeight: 35,
+            decoration: InputDecoration(
+              border: InputBorder.none,
+              focusedBorder: InputBorder.none,
+              enabledBorder: InputBorder.none,
+              errorBorder: InputBorder.none,
+              disabledBorder: InputBorder.none,
+              counterText: '',
+              hintStyle: GoogleFonts.ubuntu(
+                  color: Colors.white.withOpacity(0.75), fontSize: 21.0),
+              hintText: "Your nickname...",
+            ),
+            onChanged: (value) {
+              Get.find<MainController>().updateMainStete(newUserName: value);
+            },
+            onTap: () {}),
       ),
     );
   }

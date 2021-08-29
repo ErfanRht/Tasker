@@ -10,7 +10,6 @@ class MainController extends GetxController {
         newFirstEnterStatus != null ? newFirstEnterStatus : isFirstEnter;
     userName = newUserName != null ? newUserName : userName;
 
-    print(isFirstEnter);
     update();
   }
 }
