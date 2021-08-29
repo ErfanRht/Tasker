@@ -1,0 +1,27 @@
+name: todo
+description: A new Flutter project.
+
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  get: ^4.3.4
+  google_fonts: ^2.1.0
+  shared_preferences: ^2.0.6
+  kf_drawer: ^1.2.0
+  introduction_screen: ^2.1.0
+  flutter_spinkit: ^5.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+      - assets/images/
