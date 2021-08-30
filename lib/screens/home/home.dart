@@ -4,11 +4,11 @@ import 'package:get/get.dart';
 import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/routes.dart';
 import 'package:todo/screens/home/controller.dart';
-import 'package:todo/screens/home/drawer.dart';
-import 'package:todo/screens/home/floating-button.dart';
-import 'package:todo/screens/home/navbar.dart';
-import 'package:todo/screens/home/tasks.dart';
-import 'package:todo/screens/home/title-text.dart';
+import 'package:todo/screens/home/components/drawer.dart';
+import 'package:todo/screens/home/components/floating-button.dart';
+import 'package:todo/screens/home/components/navbar.dart';
+import 'package:todo/screens/home/components/tasks.dart';
+import 'package:todo/screens/home/components/title-text.dart';
 
 class HomeScreen extends StatelessWidget {
   @override

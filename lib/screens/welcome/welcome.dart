@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:todo/constants/colors.dart';
-import 'package:todo/screens/welcome/button.dart';
-import 'package:todo/screens/welcome/name.dart';
-import 'package:todo/screens/welcome/text.dart';
+import 'package:todo/screens/welcome/components/button.dart';
+import 'package:todo/screens/welcome/components/name.dart';
+import 'package:todo/screens/welcome/components/text.dart';
 
 class WelcomeScreen extends StatelessWidget {
   @override

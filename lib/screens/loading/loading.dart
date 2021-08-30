@@ -6,8 +6,8 @@ import 'package:todo/controllers/controller.dart';
 import 'package:todo/models/set-system-overlay-style.dart';
 import 'package:todo/models/types.dart';
 import 'package:todo/models/user-name.dart';
-import 'package:todo/screens/loading/logo.dart';
-import 'package:todo/screens/loading/spinkit.dart';
+import 'package:todo/screens/loading/components/logo.dart';
+import 'package:todo/screens/loading/components/spinkit.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override
