@@ -4,6 +4,7 @@ import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/routes.dart';
 import 'package:todo/controllers/controller.dart';
 import 'package:todo/screens/home/home.dart';
+import 'package:todo/screens/home/new-task/new-task.dart';
 import 'package:todo/screens/loading/loading.dart';
 import 'package:todo/screens/welcome/welcome.dart';
 
@@ -26,7 +27,8 @@ class App extends StatelessWidget {
       routes: {
         loading_route: (context) => LoadingScreen(),
         home_route: (context) => HomeScreen(),
-        welcome_route: (context) => WelcomeScreen()
+        welcome_route: (context) => WelcomeScreen(),
+        newtask_route: (context) => NewTaskScreen(),
       },
     );
   }

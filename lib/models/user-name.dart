@@ -6,9 +6,8 @@ Future<bool> checkUserName() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   bool userNameStatus = prefs.getString('user-name') != null ? true : false;
 
-  return false;
-  // TODO: implement checkUserName
-  // return userNameStatus;
+  // return false; // just for debuging`
+  return userNameStatus;
 }
 
 Future<bool> setUserName() async {
@@ -19,7 +18,11 @@ Future<bool> setUserName() async {
       mainController.userName == "  " ||
       mainController.userName == "   " ||
       mainController.userName == "    " ||
-      mainController.userName == "     ") {
+      mainController.userName == "     " ||
+      mainController.userName == "      " ||
+      mainController.userName == "       " ||
+      mainController.userName == "        " ||
+      mainController.userName == "         ") {
     return false;
   }
   try {

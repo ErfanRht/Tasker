@@ -58,6 +58,12 @@ class _LoadingScreenState extends State<LoadingScreen> {
         if (isFirstEnter) {
           nextRoute = welcome_route;
         } else {
+          getUserName().then((response) {
+            Get.find<MainController>().updateMainStete(
+              newUserName: response,
+            );
+          });
+
           nextRoute = home_route;
         }
       });

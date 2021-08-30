@@ -1,11 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
+import 'package:get/get.dart';
 import 'package:todo/constants/colors.dart';
+import 'package:todo/constants/routes.dart';
+import 'package:todo/screens/home/controller.dart';
+import 'package:todo/screens/home/drawer.dart';
+import 'package:todo/screens/home/floating-button.dart';
+import 'package:todo/screens/home/navbar.dart';
+import 'package:todo/screens/home/tasks.dart';
+import 'package:todo/screens/home/title-text.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: kBackgroundColor,
+    HomeController homeController = Get.put(HomeController());
+    return AdvancedDrawer(
+      backdropColor: kSecondaryColor,
+      controller: homeController.advancedDrawerController,
+      animationCurve: Curves.easeInOut,
+      animationDuration: const Duration(milliseconds: 300),
+      animateChildDecoration: true,
+      rtlOpening: false,
+      openRatio: 0.66,
+      disabledGestures: false,
+      childDecoration: const BoxDecoration(
+        borderRadius: const BorderRadius.all(Radius.circular(50)),
+      ),
+      drawer: HomeDrawer(),
+      child: Scaffold(
+        backgroundColor: kBackgroundColor,
+        body: SafeArea(
+            child: Column(
+          children: [HomeNavbar(), HomeTitleText(), HomeTasks()],
+        )),
+        floatingActionButton: Padding(
+            padding: const EdgeInsets.only(right: 15, bottom: 25),
+            child: HomeFloatingButton()),
+      ),
     );
   }
 }
