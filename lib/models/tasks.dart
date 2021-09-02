@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:todo/controllers/controller.dart';
 import 'package:todo/screens/home/new-task/controller.dart';
 
 Future<bool> addTask() async {
@@ -12,10 +13,34 @@ Future<bool> addTask() async {
       List<String> tasks = prefs.getStringList('tasks') ?? [];
       tasks.add("${newTaskController.text}&&--++&&${newTaskController.color}");
       prefs.setStringList('tasks', tasks);
-      print(tasks);
-      Get.find<NewTaskController>().text = "";
+      getTasks();
       return true;
     }
+  } catch (e) {
+    return false;
+  }
+}
+
+Future<bool> removeTask(int index) async {
+  try {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> tasks = prefs.getStringList('tasks') ?? [];
+    tasks.removeAt(index);
+    prefs.setStringList('tasks', tasks);
+    getTasks();
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+Future<bool> getTasks() async {
+  try {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List tasks = prefs.getStringList('tasks') ?? [];
+    tasks = tasks.map((e) => e.split("&&--++&&")).toList();
+    Get.find<MainController>().updateMainStete(newTasks: tasks);
+    return true;
   } catch (e) {
     return false;
   }

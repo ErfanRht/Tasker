@@ -4,7 +4,8 @@ import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/routes.dart';
 import 'package:todo/controllers/controller.dart';
 import 'package:todo/models/set-system-overlay-style.dart';
-import 'package:todo/models/types.dart';
+import 'package:todo/models/tasks.dart';
+import 'package:todo/constants/types.dart';
 import 'package:todo/models/user-name.dart';
 import 'package:todo/screens/loading/components/logo.dart';
 import 'package:todo/screens/loading/components/spinkit.dart';
@@ -58,6 +59,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
         if (isFirstEnter) {
           nextRoute = welcome_route;
         } else {
+          getTasks();
           getUserName().then((response) {
             Get.find<MainController>().updateMainStete(
               newUserName: response,
@@ -72,7 +74,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   pass() async {
     await Future.delayed(Duration(milliseconds: 6000));
-    print("object");
     Navigator.pushReplacementNamed(context, nextRoute);
   }
 }
