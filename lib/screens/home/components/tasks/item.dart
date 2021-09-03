@@ -5,6 +5,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo/constants/colors.dart';
+import 'package:todo/constants/task-colors.dart';
 import 'package:todo/controllers/controller.dart';
 import 'package:todo/models/tasks.dart';
 
@@ -74,7 +75,8 @@ class _TasksItemState extends State<TasksItem> {
                       scale: 1.2,
                       child: CircularCheckBox(
                         activeColor: Colors.grey,
-                        inactiveColor: kSecondaryColor,
+                        inactiveColor:
+                            colors[int.parse(_.tasks[widget.index][1])],
                         checkColor: Colors.white,
                         value: _visible,
                         onChanged: (value) {
@@ -88,7 +90,9 @@ class _TasksItemState extends State<TasksItem> {
                   Text(
                     _.tasks[widget.index][0],
                     style: GoogleFonts.ubuntu(
-                      color: _visible ? Colors.grey : kSecondaryColor,
+                      color: _visible
+                          ? Colors.grey
+                          : colors[int.parse(_.tasks[widget.index][1])],
                       fontWeight: FontWeight.w500,
                       fontSize: 17.5,
                       decoration: _visible ? TextDecoration.lineThrough : null,

@@ -11,7 +11,8 @@ Future<bool> addTask() async {
     } else {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       List<String> tasks = prefs.getStringList('tasks') ?? [];
-      tasks.add("${newTaskController.text}&&--++&&${newTaskController.color}");
+      tasks.add(
+          "${newTaskController.text}&&--++&&${newTaskController.colorNum}");
       prefs.setStringList('tasks', tasks);
       getTasks();
       return true;
