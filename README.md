@@ -3,7 +3,7 @@
 
 ## Screenshots
 <p float="left">
-  <img src="./Screenshots/Screenrecorder-2021-09-04-18-18-19-484(1).gif" height="400" />
+  <img src="https://github.com/ErfanRht/ToDo-list/blob/master/screenshots/Screenrecorder-2021-09-04-18-18-19-484(1).gif" height="400" />
   &ensp;
   <img src="./screenshots/Screenshot_2021-09-04-17-50-09-904_com.example.todo.jpg" height="400" />
   &ensp;
