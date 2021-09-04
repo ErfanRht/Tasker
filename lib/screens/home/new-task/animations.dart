@@ -28,17 +28,16 @@ class NewTaskAnimationsController extends GetxController {
 }
 
 startAnimations() async {
-  await Future.delayed(Duration(milliseconds: 500));
+  await Future.delayed(Duration(milliseconds: 250));
   Get.find<NewTaskAnimationsController>()
       .updateAnimations(newCloseButtonOpacity: 1);
-  await Future.delayed(Duration(milliseconds: 500));
+  await Future.delayed(Duration(milliseconds: 250));
   Get.find<NewTaskAnimationsController>()
       .updateAnimations(newTextFieldOpacity: 1);
-  await Future.delayed(Duration(milliseconds: 500));
+  await Future.delayed(Duration(milliseconds: 250));
   Get.find<NewTaskAnimationsController>().updateAnimations(newBox1Opacity: 1);
-  await Future.delayed(Duration(milliseconds: 500));
   Get.find<NewTaskAnimationsController>().updateAnimations(newBox2Opacity: 1);
-  await Future.delayed(Duration(milliseconds: 500));
+  await Future.delayed(Duration(milliseconds: 750));
   Get.find<NewTaskAnimationsController>()
       .updateAnimations(newAddButtonOpacity: 1);
 }

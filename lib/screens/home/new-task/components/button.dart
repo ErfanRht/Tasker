@@ -21,7 +21,7 @@ class NewTaskButton extends StatelessWidget {
       addTask().then((value) => {
             if (value)
               {
-                Timer(Duration(seconds: 1), () {
+                Timer(Duration(milliseconds: 500), () {
                   _btnController.success();
                   Timer(Duration(milliseconds: 1500), () {
                     Navigator.pop(context);
@@ -30,7 +30,7 @@ class NewTaskButton extends StatelessWidget {
               }
             else
               {
-                Timer(Duration(seconds: 1), () {
+                Timer(Duration(milliseconds: 500), () {
                   _btnController.error();
                   Timer(Duration(milliseconds: 1500), () {
                     _btnController.reset();

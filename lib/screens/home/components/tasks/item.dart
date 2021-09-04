@@ -20,6 +20,7 @@ class _TasksItemState extends State<TasksItem> {
   SlidableController slidableController;
 
   bool _visible, _delete;
+  double _opacity;
 
   void handleSlideAnimationChanged(Animation<double> slideAnimation) {
     setState(() {});
@@ -39,129 +40,147 @@ class _TasksItemState extends State<TasksItem> {
     super.initState();
     _visible = false;
     _delete = false;
+    _opacity = 0;
     slidableController = SlidableController(
       onSlideAnimationChanged: handleSlideAnimationChanged,
       onSlideIsOpenChanged: handleSlideIsOpenChanged,
     );
+    _animationController();
   }
 
   @override
   Widget build(BuildContext context) {
     return GetBuilder<MainController>(builder: (_) {
-      return Padding(
-          padding: EdgeInsets.only(top: 10),
-          child: Slidable(
-            controller: slidableController,
-            actionPane: SlidableBehindActionPane(),
-            actionExtentRatio: 1,
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: 75,
-              margin: EdgeInsets.only(left: 25, right: 25),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(15.0),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withOpacity(0.1),
-                      blurRadius: 0.001,
-                    )
-                  ],
-                  color: Colors.white),
-              child: Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 10, right: 10),
-                    child: Transform.scale(
-                      scale: 1.2,
-                      child: CircularCheckBox(
-                        activeColor: Colors.grey,
-                        inactiveColor:
-                            colors[int.parse(_.tasks[widget.index][1])],
-                        checkColor: Colors.white,
-                        value: _visible,
-                        onChanged: (value) {
-                          setState(() {
-                            _visible = !_visible;
-                          });
-                        },
-                      ),
-                    ),
-                  ),
-                  Text(
-                    _.tasks[widget.index][0],
-                    style: GoogleFonts.ubuntu(
-                      color: _visible
-                          ? Colors.grey
-                          : colors[int.parse(_.tasks[widget.index][1])],
-                      fontWeight: FontWeight.w500,
-                      fontSize: 17.5,
-                      decoration: _visible ? TextDecoration.lineThrough : null,
-                    ),
-                  )
-                ],
-              ),
-            ),
-            secondaryActions: <Widget>[
-              Container(
+      return AnimatedOpacity(
+        opacity: _opacity,
+        duration: Duration(milliseconds: 500),
+        child: Padding(
+            padding: EdgeInsets.only(top: 10),
+            child: Slidable(
+              controller: slidableController,
+              actionPane: SlidableBehindActionPane(),
+              actionExtentRatio: 1,
+              child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: 75,
+                margin: EdgeInsets.only(left: 25, right: 25),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(15.0),
-                    color: kBackgroundColor),
-                child:
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 12.5, right: 5),
-                    child: Icon(
-                      FontAwesomeIcons.trashAlt,
-                      color: Colors.grey,
-                      size: 22.5,
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 5, right: 10),
-                    child: Text(
-                      'The task was deleted',
-                      style: GoogleFonts.ubuntu(
-                        color: Colors.grey,
-                        fontWeight: FontWeight.w500,
-                        fontSize: 17.5,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 10, right: 10),
-                    child: Container(
-                      width: 70,
-                      height: 30,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15.0),
-                          color: kBackgroundColor,
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.75),
-                              blurRadius: 1,
-                            )
-                          ]),
-                      child: Center(
-                        child: InkWell(
-                          onTap: () {},
-                          child: Text(
-                            'UNDO',
-                            style: GoogleFonts.ubuntu(
-                              color: Colors.black,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 15,
-                            ),
-                          ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.1),
+                        blurRadius: 0.001,
+                      )
+                    ],
+                    color: Colors.white),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 10, right: 10),
+                      child: Transform.scale(
+                        scale: 1.2,
+                        child: CircularCheckBox(
+                          activeColor: Colors.grey,
+                          inactiveColor:
+                              colors[int.parse(_.tasks[widget.index][1])],
+                          checkColor: Colors.white,
+                          value: _visible,
+                          onChanged: (value) {
+                            setState(() {
+                              _visible = !_visible;
+                            });
+                          },
                         ),
                       ),
                     ),
-                  )
-                ]),
-              )
-            ],
-          ));
+                    Text(
+                      _.tasks[widget.index][0],
+                      style: GoogleFonts.ubuntu(
+                        color: _visible
+                            ? Colors.grey
+                            : colors[int.parse(_.tasks[widget.index][1])],
+                        fontWeight: FontWeight.w500,
+                        fontSize: 17.5,
+                        decoration:
+                            _visible ? TextDecoration.lineThrough : null,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+              secondaryActions: <Widget>[
+                Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 75,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15.0),
+                      color: kBackgroundColor),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: 12.5, right: 5),
+                          child: Icon(
+                            FontAwesomeIcons.trashAlt,
+                            color: Colors.grey,
+                            size: 22.5,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 5, right: 10),
+                          child: Text(
+                            'The task was deleted',
+                            style: GoogleFonts.ubuntu(
+                              color: Colors.grey,
+                              fontWeight: FontWeight.w500,
+                              fontSize: 17.5,
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 10, right: 10),
+                          child: Container(
+                            width: 70,
+                            height: 30,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(15.0),
+                                color: kBackgroundColor,
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Colors.grey.withOpacity(0.75),
+                                    blurRadius: 1,
+                                  )
+                                ]),
+                            child: Center(
+                              child: InkWell(
+                                onTap: () {},
+                                child: Text(
+                                  'UNDO',
+                                  style: GoogleFonts.ubuntu(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 15,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        )
+                      ]),
+                )
+              ],
+            )),
+      );
+    });
+  }
+
+  _animationController() async {
+    await Future.delayed(Duration(milliseconds: 2000));
+    await Future.delayed(Duration(
+        milliseconds:
+            500 * (Get.find<MainController>().tasks.length - widget.index)));
+    setState(() {
+      _opacity = 1;
     });
   }
 
@@ -171,6 +190,7 @@ class _TasksItemState extends State<TasksItem> {
       setState(() {
         _delete = false;
       });
+      Slidable.of(context).close();
       removeTask(widget.index);
     }
   }

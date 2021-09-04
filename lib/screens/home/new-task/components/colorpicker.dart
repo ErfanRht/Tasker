@@ -32,7 +32,7 @@ class _NewTaskColorPickerState extends State<NewTaskColorPicker> {
           ),
           content: Container(
             width: MediaQuery.of(context).size.width,
-            height: 250,
+            height: 240,
             child: GridView.builder(
               physics: ScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

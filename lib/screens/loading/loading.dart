@@ -7,6 +7,7 @@ import 'package:todo/models/set-system-overlay-style.dart';
 import 'package:todo/models/tasks.dart';
 import 'package:todo/constants/types.dart';
 import 'package:todo/models/user-name.dart';
+import 'package:todo/screens/loading/animations.dart';
 import 'package:todo/screens/loading/components/logo.dart';
 import 'package:todo/screens/loading/components/spinkit.dart';
 
@@ -16,6 +17,8 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
+  LoadingAnimationsController loadingAnimationsController =
+      Get.put(LoadingAnimationsController());
   String nextRoute;
   bool isFirstEnter;
   @override
@@ -23,6 +26,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     super.initState();
     nextRoute = home_route;
     isFirstEnter = false;
+    startLoadingAnimations();
     load();
   }
 
@@ -73,7 +77,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
   }
 
   pass() async {
-    await Future.delayed(Duration(milliseconds: 6000));
+    await Future.delayed(loadingAnimationsController.allAnimationTimes);
     Navigator.pushReplacementNamed(context, nextRoute);
   }
 }
