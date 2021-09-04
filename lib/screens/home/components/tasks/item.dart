@@ -190,7 +190,6 @@ class _TasksItemState extends State<TasksItem> {
       setState(() {
         _delete = false;
       });
-      Slidable.of(context).close();
       removeTask(widget.index);
     }
   }
