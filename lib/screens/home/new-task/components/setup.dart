@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:todo/constants/colors.dart';
 import 'package:todo/screens/home/new-task/animations.dart';
 import 'package:todo/screens/home/new-task/components/colorpicker.dart';
-import '../controller.dart';
+import '../../../../controllers/newtask-controller.dart';
 
 class NewTaskSetup extends StatelessWidget {
   Duration _animationDuration = Duration(milliseconds: 500);

@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:todo/screens/home/new-task/controller.dart';
+import 'package:todo/controllers/newtask-controller.dart';
 
 class NewTaskAnimationsController extends GetxController {
   double closeButtonOpacity = 0;

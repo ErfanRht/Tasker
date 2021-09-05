@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo/controllers/controller.dart';
-import 'package:todo/screens/home/new-task/controller.dart';
+import 'package:todo/controllers/newtask-controller.dart';
 
 Future<bool> addTask() async {
   try {

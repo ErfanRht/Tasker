@@ -6,7 +6,7 @@ import 'package:todo/constants/task-colors.dart';
 import 'package:todo/screens/home/new-task/animations.dart';
 import 'package:todo/screens/home/new-task/components/button.dart';
 import 'package:todo/screens/home/new-task/components/close.dart';
-import 'package:todo/screens/home/new-task/controller.dart';
+import 'package:todo/controllers/newtask-controller.dart';
 import 'package:todo/screens/home/new-task/components/setup.dart';
 
 class NewTaskScreen extends StatelessWidget {

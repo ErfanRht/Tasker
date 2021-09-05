@@ -8,7 +8,7 @@ import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/routes.dart';
 import 'package:todo/models/tasks.dart';
 import 'package:todo/screens/home/new-task/animations.dart';
-import 'package:todo/screens/home/new-task/controller.dart';
+import 'package:todo/controllers/newtask-controller.dart';
 
 class NewTaskButton extends StatelessWidget {
   Duration _animationDuration = Duration(milliseconds: 500);

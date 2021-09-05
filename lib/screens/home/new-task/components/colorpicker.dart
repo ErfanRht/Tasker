@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/task-colors.dart';
-import 'package:todo/screens/home/new-task/controller.dart';
+import 'package:todo/controllers/newtask-controller.dart';
 
 class NewTaskColorPicker extends StatefulWidget {
   @override
