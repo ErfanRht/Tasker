@@ -5,11 +5,14 @@ import 'package:todo/constants/colors.dart';
 import 'package:todo/controllers/controller.dart';
 
 class WelcomeName extends StatefulWidget {
+  bool isDark;
+  WelcomeName({this.isDark});
   @override
   _WelcomeNameState createState() => _WelcomeNameState();
 }
 
 class _WelcomeNameState extends State<WelcomeName> {
+  bool isDark;
   Duration _animationSpeed;
   double _opacity;
   EdgeInsets _padding;
@@ -17,6 +20,7 @@ class _WelcomeNameState extends State<WelcomeName> {
   @override
   void initState() {
     super.initState();
+    isDark = widget.isDark;
     _opacity = 0.0;
     _animationSpeed = Duration(milliseconds: 666);
     _padding = EdgeInsets.only(top: 33);
@@ -38,11 +42,15 @@ class _WelcomeNameState extends State<WelcomeName> {
         width: MediaQuery.of(context).size.width - 80,
         height: 80,
         decoration: BoxDecoration(
-          color: kSecondaryColor.withOpacity(0.75),
+          color: isDark
+              ? kBackgroundColor.withOpacity(0.75)
+              : kSecondaryColor.withOpacity(0.75),
           borderRadius: BorderRadius.circular(17.5),
           boxShadow: [
             BoxShadow(
-              color: kSecondaryColor.withOpacity(0.1),
+              color: isDark
+                  ? kBackgroundColor.withOpacity(0.4)
+                  : kSecondaryColor.withOpacity(0.1),
               blurRadius: 10,
               spreadRadius: 5,
             ),
@@ -52,11 +60,12 @@ class _WelcomeNameState extends State<WelcomeName> {
             textAlign: TextAlign.center,
             maxLength: 25,
             style: GoogleFonts.ubuntu(
-                color: Colors.white,
-                fontSize: 25,
-                fontWeight: FontWeight.w700,
-                decorationColor: Colors.white),
-            cursorColor: Colors.white,
+              color: isDark ? kDarkBackgroundColor : Colors.white,
+              fontSize: 25,
+              fontWeight: FontWeight.w700,
+              decorationColor: isDark ? kDarkBackgroundColor : Colors.white,
+            ),
+            cursorColor: isDark ? kDarkBackgroundColor : Colors.white,
             cursorHeight: 35,
             decoration: InputDecoration(
               border: InputBorder.none,
@@ -66,7 +75,10 @@ class _WelcomeNameState extends State<WelcomeName> {
               disabledBorder: InputBorder.none,
               counterText: '',
               hintStyle: GoogleFonts.ubuntu(
-                  color: Colors.white.withOpacity(0.75), fontSize: 21.0),
+                  color: isDark
+                      ? kDarkBackgroundColor.withOpacity(0.75)
+                      : Colors.white.withOpacity(0.75),
+                  fontSize: 21.0),
               hintText: "Your nickname...",
             ),
             onChanged: (value) {
@@ -83,10 +95,5 @@ class _WelcomeNameState extends State<WelcomeName> {
       _opacity = 1.0;
       _padding = EdgeInsets.zero;
     });
-    // await Future.delayed(Duration(milliseconds: 2000));
-    // setState(() {
-    //   _opacity = 0.0;
-    //   _padding = EdgeInsets.only(top: 33);
-    // });
   }
 }

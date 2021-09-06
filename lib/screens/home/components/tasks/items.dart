@@ -14,8 +14,12 @@ class HomeTasksItems extends StatefulWidget {
 }
 
 class _HomeTasksItemsState extends State<HomeTasksItems> {
+  bool _isDark;
   @override
   Widget build(BuildContext context) {
+    final Brightness brightnessValue =
+        MediaQuery.of(context).platformBrightness;
+    _isDark = brightnessValue == Brightness.dark;
     return GetBuilder<MainController>(
       builder: (_) {
         return AnimatedSwitcher(
@@ -42,7 +46,9 @@ class _HomeTasksItemsState extends State<HomeTasksItems> {
                     Text(
                       "You have no task for today!",
                       style: GoogleFonts.ubuntu(
-                          color: kSecondaryColor,
+                          color: _isDark
+                              ? kBackgroundColor.withOpacity(0.8)
+                              : kSecondaryColor,
                           fontSize: 22.2,
                           fontWeight: FontWeight.w700),
                     ),
@@ -50,12 +56,16 @@ class _HomeTasksItemsState extends State<HomeTasksItems> {
                       padding: EdgeInsets.only(left: 50, right: 50),
                       child: UnDraw(
                         height: MediaQuery.of(context).size.width - 100,
-                        color: kSecondaryColor,
+                        color: _isDark
+                            ? kBackgroundColor.withOpacity(0.8)
+                            : kSecondaryColor,
                         illustration: UnDrawIllustration.empty,
                         placeholder: Padding(
                           padding: EdgeInsets.only(top: 100),
                           child: SpinKitDoubleBounce(
-                            color: kSecondaryColor,
+                            color: _isDark
+                                ? kBackgroundColor.withOpacity(0.8)
+                                : kSecondaryColor,
                             size: 75,
                           ),
                         ),

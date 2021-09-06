@@ -3,11 +3,14 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:todo/constants/colors.dart';
 
 class WelcomeText extends StatefulWidget {
+  bool isDark;
+  WelcomeText({this.isDark});
   @override
   _WelcomeTextState createState() => _WelcomeTextState();
 }
 
 class _WelcomeTextState extends State<WelcomeText> {
+  bool isDark;
   Duration _animationSpeed;
   double _opacity, _opacity2;
   EdgeInsets _padding;
@@ -15,6 +18,7 @@ class _WelcomeTextState extends State<WelcomeText> {
   @override
   void initState() {
     super.initState();
+    isDark = widget.isDark;
     _opacity = 0.0;
     _opacity2 = 0.0;
     _animationSpeed = Duration(milliseconds: 750);
@@ -35,7 +39,7 @@ class _WelcomeTextState extends State<WelcomeText> {
               padding: _padding,
               child: Text("welcome",
                   style: GoogleFonts.ubuntu(
-                      color: kSecondaryColor,
+                      color: isDark ? kBackgroundColor : kSecondaryColor,
                       fontWeight: FontWeight.w800,
                       fontSize: 66))),
         ),
@@ -48,7 +52,9 @@ class _WelcomeTextState extends State<WelcomeText> {
           duration: _animationSpeed,
           child: Text("By the wey, What do your friends call you?",
               style: GoogleFonts.ubuntu(
-                  color: kSecondaryColor.withOpacity(0.85),
+                  color: isDark
+                      ? kBackgroundColor.withOpacity(0.85)
+                      : kSecondaryColor.withOpacity(0.85),
                   fontWeight: FontWeight.w800,
                   fontSize: 15)),
         )),

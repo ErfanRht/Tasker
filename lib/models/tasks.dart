@@ -6,6 +6,7 @@ import 'package:todo/controllers/newtask-controller.dart';
 Future<bool> addTask() async {
   try {
     NewTaskController newTaskController = Get.put(NewTaskController());
+    print(newTaskController.text);
     if (newTaskController.text == "") {
       return false;
     } else {

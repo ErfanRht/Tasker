@@ -3,6 +3,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/task-colors.dart';
+import 'package:todo/constants/types.dart';
+import 'package:todo/models/set-system-overlay-style.dart';
 import 'package:todo/screens/home/new-task/animations.dart';
 import 'package:todo/screens/home/new-task/components/button.dart';
 import 'package:todo/screens/home/new-task/components/close.dart';
@@ -14,15 +16,24 @@ class NewTaskScreen extends StatelessWidget {
   NewTaskAnimationsController newTaskAnimationsController = Get.put(
     NewTaskAnimationsController(),
   );
+  bool _isDark;
   @override
   Widget build(BuildContext context) {
+    final Brightness brightnessValue =
+        MediaQuery.of(context).platformBrightness;
+    _isDark = brightnessValue == Brightness.dark;
+    _isDark
+        ? setSystemUIOverlayStyle(
+            systemUIOverlayStyle: SystemUIOverlayStyle.BLUE_DARK)
+        : setSystemUIOverlayStyle(
+            systemUIOverlayStyle: SystemUIOverlayStyle.LIGHT);
     startAnimations();
     return WillPopScope(
       onWillPop: () async {
         return await closePage(context);
       },
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: _isDark ? kDarkBackgroundColor2 : Colors.white,
         body: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

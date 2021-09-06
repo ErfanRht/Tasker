@@ -7,7 +7,7 @@ setSystemUIOverlayStyle({@required SystemUIOverlayStyle systemUIOverlayStyle}) {
   if (systemUIOverlayStyle == SystemUIOverlayStyle.DARK) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        systemNavigationBarColor: Colors.transparent,
+        systemNavigationBarColor: kDarkBackgroundColor,
         systemNavigationBarDividerColor: Colors.transparent,
         systemNavigationBarIconBrightness: Brightness.dark,
         statusBarIconBrightness: Brightness.light,
@@ -15,7 +15,7 @@ setSystemUIOverlayStyle({@required SystemUIOverlayStyle systemUIOverlayStyle}) {
   } else if (systemUIOverlayStyle == SystemUIOverlayStyle.LIGHT) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        systemNavigationBarColor: Colors.white,
+        systemNavigationBarColor: kBackgroundColor,
         systemNavigationBarDividerColor: Colors.transparent,
         systemNavigationBarIconBrightness: Brightness.dark,
         statusBarIconBrightness: Brightness.dark,
@@ -27,6 +27,14 @@ setSystemUIOverlayStyle({@required SystemUIOverlayStyle systemUIOverlayStyle}) {
         systemNavigationBarDividerColor: Colors.transparent,
         systemNavigationBarIconBrightness: Brightness.light,
         statusBarIconBrightness: Brightness.light,
+        statusBarBrightness: Brightness.light));
+  } else if (systemUIOverlayStyle == SystemUIOverlayStyle.BLUE_DARK) {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        systemNavigationBarColor: kDarkBackgroundColor2,
+        systemNavigationBarDividerColor: Colors.transparent,
+        systemNavigationBarIconBrightness: Brightness.dark,
+        statusBarIconBrightness: Brightness.dark,
         statusBarBrightness: Brightness.light));
   }
 }

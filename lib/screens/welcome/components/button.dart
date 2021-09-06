@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
@@ -8,11 +7,14 @@ import 'package:todo/constants/routes.dart';
 import 'package:todo/models/user-name.dart';
 
 class LoadingButton extends StatefulWidget {
+  bool isDark;
+  LoadingButton({this.isDark});
   @override
   _LoadingButtonState createState() => _LoadingButtonState();
 }
 
 class _LoadingButtonState extends State<LoadingButton> {
+  bool isDark;
   Duration _animationSpeed;
   double _opacity;
 
@@ -42,6 +44,7 @@ class _LoadingButtonState extends State<LoadingButton> {
   @override
   void initState() {
     super.initState();
+    isDark = widget.isDark;
     _opacity = 0.0;
     _animationSpeed = Duration(milliseconds: 500);
 
@@ -56,16 +59,16 @@ class _LoadingButtonState extends State<LoadingButton> {
       child: RoundedLoadingButton(
         child: Text('continue',
             style: GoogleFonts.ubuntu(
-                color: Colors.white,
+                color: isDark ? kDarkBackgroundColor : Colors.white,
                 fontSize: 20,
                 fontWeight: FontWeight.w700)),
         height: 55,
-        color: kSecondaryColor,
+        color: isDark ? kBackgroundColor : kSecondaryColor,
         successColor: Colors.greenAccent,
         errorColor: Colors.redAccent,
         controller: _btnController,
         onPressed: _setName,
-        valueColor: Colors.white,
+        valueColor: isDark ? kDarkBackgroundColor : Colors.white,
       ),
     );
   }

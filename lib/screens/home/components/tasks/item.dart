@@ -48,8 +48,12 @@ class _TasksItemState extends State<TasksItem> {
     _animationController();
   }
 
+  bool _isDark;
   @override
   Widget build(BuildContext context) {
+    final Brightness brightnessValue =
+        MediaQuery.of(context).platformBrightness;
+    _isDark = brightnessValue == Brightness.dark;
     return GetBuilder<MainController>(builder: (_) {
       return AnimatedOpacity(
         opacity: _opacity,
@@ -62,17 +66,17 @@ class _TasksItemState extends State<TasksItem> {
               actionExtentRatio: 1,
               child: Container(
                 width: MediaQuery.of(context).size.width,
-                height: 75,
+                height: 70,
                 margin: EdgeInsets.only(left: 25, right: 25),
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15.0),
+                    borderRadius: BorderRadius.circular(22.5),
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.1),
                         blurRadius: 0.001,
                       )
                     ],
-                    color: Colors.white),
+                    color: _isDark ? kDarkBackgroundColor : Colors.white),
                 child: Row(
                   children: [
                     Padding(
@@ -98,7 +102,9 @@ class _TasksItemState extends State<TasksItem> {
                       style: GoogleFonts.ubuntu(
                         color: _visible
                             ? Colors.grey
-                            : colors[int.parse(_.tasks[widget.index][1])],
+                            : _isDark
+                                ? Colors.white
+                                : colors[int.parse(_.tasks[widget.index][1])],
                         fontWeight: FontWeight.w500,
                         fontSize: 17.5,
                         decoration:
@@ -108,70 +114,71 @@ class _TasksItemState extends State<TasksItem> {
                   ],
                 ),
               ),
-              secondaryActions: <Widget>[
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 75,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15.0),
-                      color: kBackgroundColor),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(left: 12.5, right: 5),
-                          child: Icon(
-                            FontAwesomeIcons.trashAlt,
-                            color: Colors.grey,
-                            size: 22.5,
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 5, right: 10),
-                          child: Text(
-                            'The task was deleted',
-                            style: GoogleFonts.ubuntu(
-                              color: Colors.grey,
-                              fontWeight: FontWeight.w500,
-                              fontSize: 17.5,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 10, right: 10),
-                          child: Container(
-                            width: 70,
-                            height: 30,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(15.0),
-                                color: kBackgroundColor,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.grey.withOpacity(0.75),
-                                    blurRadius: 1,
-                                  )
-                                ]),
-                            child: Center(
-                              child: InkWell(
-                                onTap: () {},
-                                child: Text(
-                                  'UNDO',
-                                  style: GoogleFonts.ubuntu(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 15,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        )
-                      ]),
-                )
-              ],
+              secondaryActions: <Widget>[deleteBox()],
+              actions: <Widget>[deleteBox()],
             )),
       );
     });
+  }
+
+  Widget deleteBox() {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 70,
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15.0),
+          color: _isDark ? kDarkBackgroundColor2 : kBackgroundColor),
+      child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+        Padding(
+          padding: EdgeInsets.only(left: 12.5, right: 5),
+          child: Icon(
+            FontAwesomeIcons.trashAlt,
+            color: _isDark ? Colors.white : Colors.grey,
+            size: 22.5,
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 5, right: 10),
+          child: Text(
+            'The task was deleted',
+            style: GoogleFonts.ubuntu(
+              color: _isDark ? Colors.white : Colors.grey,
+              fontWeight: FontWeight.w500,
+              fontSize: 17.5,
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 10, right: 10),
+          child: Container(
+            width: 70,
+            height: 30,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15.0),
+                color: kBackgroundColor,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.75),
+                    blurRadius: 1,
+                  )
+                ]),
+            child: Center(
+              child: InkWell(
+                onTap: () {},
+                child: Text(
+                  'UNDO',
+                  style: GoogleFonts.ubuntu(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                    fontSize: 15,
+                  ),
+                ),
+              ),
+            ),
+          ),
+        )
+      ]),
+    );
   }
 
   _animationController() async {

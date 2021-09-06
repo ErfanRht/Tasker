@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/types.dart';
 import 'package:todo/models/set-system-overlay-style.dart';
 import 'package:todo/screens/home/animations.dart';
@@ -10,9 +11,12 @@ import 'package:todo/controllers/home-controller.dart';
 class HomeNavbar extends StatelessWidget {
   HomeController homeController = Get.put(HomeController());
   Duration _animationSpeed = Duration(milliseconds: 300);
-
+  bool _isDark;
   @override
   Widget build(BuildContext context) {
+    final Brightness brightnessValue =
+        MediaQuery.of(context).platformBrightness;
+    _isDark = brightnessValue == Brightness.dark;
     return GetBuilder<HomeAnimationsController>(builder: (_) {
       return Padding(
         padding: const EdgeInsets.all(15),
@@ -32,7 +36,9 @@ class HomeNavbar extends StatelessWidget {
                         value.visible
                             ? FontAwesomeIcons.times
                             : FontAwesomeIcons.stream,
-                        color: Colors.black.withOpacity(0.40),
+                        color: _isDark
+                            ? kBackgroundColor
+                            : Colors.black.withOpacity(0.40),
                         size: 22.2,
                         key: ValueKey<bool>(value.visible),
                       ),
@@ -52,7 +58,9 @@ class HomeNavbar extends StatelessWidget {
               child: IconButton(
                 icon: Icon(
                   FontAwesomeIcons.search,
-                  color: Colors.black.withOpacity(0.40),
+                  color: _isDark
+                      ? kBackgroundColor
+                      : Colors.black.withOpacity(0.40),
                   size: 22.2,
                 ),
                 onPressed: () {},

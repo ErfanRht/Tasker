@@ -12,6 +12,7 @@ void main() {
   runApp(App());
 }
 
+// ignore: must_be_immutable
 class App extends StatelessWidget {
   MainController mainController = Get.put(MainController());
   String initRoute = loading_route;

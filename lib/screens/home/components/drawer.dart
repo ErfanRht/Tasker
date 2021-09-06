@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/routes.dart';
 import 'package:todo/controllers/controller.dart';
+import 'package:todo/controllers/home-controller.dart';
 
 class HomeDrawer extends StatelessWidget {
   @override
@@ -38,8 +39,10 @@ class HomeDrawer extends StatelessWidget {
                 ),
               ],
             ),
-            drawerItem("Add new task", FontAwesomeIcons.plusCircle, () {
-              // Navigator.pushNamed(context, newtask_route);
+            drawerItem("Add new task", FontAwesomeIcons.plusCircle, () async {
+              Get.find<HomeController>().advancedDrawerController.hideDrawer();
+              await Future.delayed(Duration(milliseconds: 500));
+              Navigator.pushNamed(context, newtask_route);
             }),
             drawerItem(
                 "Delete all tasks", FontAwesomeIcons.solidTrashAlt, () {}),

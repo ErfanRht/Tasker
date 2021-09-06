@@ -17,24 +17,39 @@ class HomeScreen extends StatelessWidget {
   HomeAnimationsController homeAnimationsController =
       Get.put(HomeAnimationsController());
   int num = 0;
+  bool _isDark;
   @override
   Widget build(BuildContext context) {
+    final Brightness brightnessValue =
+        MediaQuery.of(context).platformBrightness;
+    _isDark = brightnessValue == Brightness.dark;
+    _isDark
+        ? setSystemUIOverlayStyle(
+            systemUIOverlayStyle: SystemUIOverlayStyle.BLUE_DARK)
+        : setSystemUIOverlayStyle(
+            systemUIOverlayStyle: SystemUIOverlayStyle.LIGHT);
     homeController.advancedDrawerController.addListener(() {
       Get.find<HomeController>().changeDrawerStatus();
       if (Get.find<HomeController>().drawerStatus == DrawerStatus.OPEN) {
-        setSystemUIOverlayStyle(
-            systemUIOverlayStyle: SystemUIOverlayStyle.BLUE);
+        _isDark
+            ? setSystemUIOverlayStyle(
+                systemUIOverlayStyle: SystemUIOverlayStyle.DARK)
+            : setSystemUIOverlayStyle(
+                systemUIOverlayStyle: SystemUIOverlayStyle.BLUE);
       } else if (Get.find<HomeController>().drawerStatus ==
           DrawerStatus.CLOSE) {
-        setSystemUIOverlayStyle(
-            systemUIOverlayStyle: SystemUIOverlayStyle.LIGHT);
+        _isDark
+            ? setSystemUIOverlayStyle(
+                systemUIOverlayStyle: SystemUIOverlayStyle.BLUE_DARK)
+            : setSystemUIOverlayStyle(
+                systemUIOverlayStyle: SystemUIOverlayStyle.LIGHT);
       }
     });
     startHomeAnimations();
     return GetBuilder<HomeController>(
       builder: (_) {
         return AdvancedDrawer(
-          backdropColor: kSecondaryColor,
+          backdropColor: _isDark ? kDarkBackgroundColor : kSecondaryColor,
           controller: homeController.advancedDrawerController,
           animationCurve: Curves.easeInOut,
           animationDuration: const Duration(milliseconds: 300),
@@ -47,7 +62,7 @@ class HomeScreen extends StatelessWidget {
           ),
           drawer: HomeDrawer(),
           child: Scaffold(
-            backgroundColor: kBackgroundColor,
+            backgroundColor: _isDark ? kDarkBackgroundColor2 : kBackgroundColor,
             body: SafeArea(
                 child: SingleChildScrollView(
               physics: BouncingScrollPhysics(),

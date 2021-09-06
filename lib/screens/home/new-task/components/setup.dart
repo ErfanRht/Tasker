@@ -9,8 +9,12 @@ import '../../../../controllers/newtask-controller.dart';
 
 class NewTaskSetup extends StatelessWidget {
   Duration _animationDuration = Duration(milliseconds: 500);
+  bool _isDark;
   @override
   Widget build(BuildContext context) {
+    final Brightness brightnessValue =
+        MediaQuery.of(context).platformBrightness;
+    _isDark = brightnessValue == Brightness.dark;
     return GetBuilder<NewTaskAnimationsController>(builder: (_) {
       return GetBuilder<NewTaskController>(builder: (__) {
         return Column(
@@ -38,7 +42,10 @@ class NewTaskSetup extends StatelessWidget {
                       disabledBorder: InputBorder.none,
                       counterText: '',
                       hintStyle: GoogleFonts.ubuntu(
-                          color: Colors.grey, fontSize: 21.0),
+                          color: _isDark
+                              ? Colors.white.withOpacity(0.8)
+                              : Colors.grey,
+                          fontSize: 21.0),
                       hintText: "Enter new task",
                     ),
                     onChanged: (value) {

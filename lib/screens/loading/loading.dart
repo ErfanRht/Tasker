@@ -21,6 +21,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
       Get.put(LoadingAnimationsController());
   String nextRoute;
   bool isFirstEnter;
+  bool _isDark;
   @override
   void initState() {
     super.initState();
@@ -32,18 +33,29 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    setSystemUIOverlayStyle(systemUIOverlayStyle: SystemUIOverlayStyle.LIGHT);
+    final Brightness brightnessValue =
+        MediaQuery.of(context).platformBrightness;
+    _isDark = brightnessValue == Brightness.dark;
+    _isDark
+        ? setSystemUIOverlayStyle(
+            systemUIOverlayStyle: SystemUIOverlayStyle.DARK)
+        : setSystemUIOverlayStyle(
+            systemUIOverlayStyle: SystemUIOverlayStyle.LIGHT);
     return Scaffold(
-        backgroundColor: kBackgroundColor,
+        backgroundColor: _isDark ? kDarkBackgroundColor : kBackgroundColor,
         body: Padding(
             padding: const EdgeInsets.only(left: 50, right: 45),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 SizedBox(),
-                LoadingLogo(),
+                LoadingLogo(
+                  isDark: _isDark,
+                ),
                 SizedBox(),
-                LoadingSpinkit(),
+                LoadingSpinkit(
+                  isDark: _isDark,
+                ),
               ],
             )));
   }
