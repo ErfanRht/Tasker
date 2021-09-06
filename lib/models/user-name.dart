@@ -6,7 +6,7 @@ Future<bool> checkUserName() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   bool userNameStatus = prefs.getString('user-name') != null ? true : false;
 
-  // return false; // just for debuging`
+  // return false; // just for debuging
   return userNameStatus;
 }
 

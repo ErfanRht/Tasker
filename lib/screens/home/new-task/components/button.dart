@@ -10,13 +10,20 @@ import 'package:todo/models/tasks.dart';
 import 'package:todo/screens/home/new-task/animations.dart';
 import 'package:todo/controllers/newtask-controller.dart';
 
-class NewTaskButton extends StatelessWidget {
-  Duration _animationDuration = Duration(milliseconds: 500);
+class NewTaskButton extends StatefulWidget {
+  @override
+  _NewTaskButtonState createState() => _NewTaskButtonState();
+}
+
+class _NewTaskButtonState extends State<NewTaskButton> {
+  final RoundedLoadingButtonController _btnController =
+      RoundedLoadingButtonController();
+
+  @override
+  bool get wantKeepAlive => true;
+
   @override
   Widget build(BuildContext context) {
-    final RoundedLoadingButtonController _btnController =
-        RoundedLoadingButtonController();
-
     void _add() async {
       addTask().then((value) => {
             if (value)
