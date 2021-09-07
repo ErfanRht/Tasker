@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:todo/constants/colors.dart';
+import 'package:todo/models/tasks.dart';
 import 'package:todo/screens/home/animations.dart';
 import 'package:todo/screens/home/components/tasks/items.dart';
 
@@ -18,6 +20,7 @@ class HomeTasks extends StatelessWidget {
         child: Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
                   padding: const EdgeInsets.only(left: 25.0),
@@ -34,6 +37,22 @@ class HomeTasks extends StatelessWidget {
                               : Colors.black.withOpacity(0.3)),
                     ),
                   ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 25.0),
+                  child: AnimatedOpacity(
+                      duration: _animationDuration,
+                      opacity: _.tasksTitleOpacity,
+                      child: IconButton(
+                          icon: Icon(FontAwesomeIcons.checkDouble,
+                              size: 22.5,
+                              color: _isDark
+                                  ? kBackgroundColor.withOpacity(0.5)
+                                  : Colors.black.withOpacity(0.3)),
+                          onPressed: () async {
+                            await Future.delayed(Duration(milliseconds: 111));
+                            doneAllTasks();
+                          })),
                 ),
               ],
             ),

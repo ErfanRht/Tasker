@@ -51,6 +51,12 @@ class HomeDrawer extends StatelessWidget {
               await Future.delayed(Duration(milliseconds: 420));
               Navigator.pushNamed(context, newtask_route);
             }),
+            drawerItem("Done all tasks", FontAwesomeIcons.checkDouble,
+                () async {
+              Get.find<HomeController>().advancedDrawerController.hideDrawer();
+              await Future.delayed(Duration(milliseconds: 450));
+              doneAllTasks();
+            }),
             drawerItem("Delete all tasks", FontAwesomeIcons.solidTrashAlt,
                 () async {
               Get.find<HomeController>().advancedDrawerController.hideDrawer();
@@ -62,7 +68,6 @@ class HomeDrawer extends StatelessWidget {
                 },
               );
             }),
-            drawerItem("Tasks history", FontAwesomeIcons.clipboardList, () {}),
             drawerItem("Settings", FontAwesomeIcons.cog, () {}),
             drawerItem("Support", FontAwesomeIcons.handHoldingHeart, () {
               _launchInBrowser('https://github.com/ErfanRht/');

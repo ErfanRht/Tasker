@@ -74,3 +74,16 @@ Future<bool> removeAllTasks() async {
     return false;
   }
 }
+
+Future<bool> doneAllTasks() async {
+  try {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> tasks = prefs.getStringList('tasks') ?? [];
+    tasks = tasks.map((e) => e.replaceFirst("not-done", "done")).toList();
+    prefs.setStringList('tasks', tasks);
+    getTasks();
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
