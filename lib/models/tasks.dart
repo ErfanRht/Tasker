@@ -1,19 +1,30 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo/controllers/controller.dart';
 import 'package:todo/controllers/newtask-controller.dart';
 
-Future<bool> addTask() async {
+Future<bool> getTasks() async {
   try {
-    NewTaskController newTaskController = Get.put(NewTaskController());
-    print(newTaskController.text);
-    if (newTaskController.text == "") {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List tasks = prefs.getStringList('tasks') ?? [];
+    tasks = tasks.map((e) => e.split("&&--++&&")).toList();
+    Get.find<MainController>().updateMainStete(newTasks: tasks);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+Future<bool> addTask({@required String text, @required int colorNum}) async {
+  try {
+    print(text);
+    if (text == "") {
       return false;
     } else {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       List<String> tasks = prefs.getStringList('tasks') ?? [];
-      tasks.add(
-          "${newTaskController.text}&&--++&&${newTaskController.colorNum}");
+      tasks.add("$text&&--++&&$colorNum&&--++&&not-done");
       prefs.setStringList('tasks', tasks);
       getTasks();
       return true;
@@ -23,7 +34,24 @@ Future<bool> addTask() async {
   }
 }
 
-Future<bool> removeTask(int index) async {
+Future<bool> updateTask({@required int index}) async {
+  try {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> tasks = prefs.getStringList('tasks') ?? [];
+    if (Get.find<MainController>().tasks[index][2] == "not-done") {
+      tasks[index] = tasks[index].replaceFirst("not-done", "done");
+    } else {
+      tasks[index] = tasks[index].replaceFirst("done", "not-done");
+    }
+    prefs.setStringList('tasks', tasks);
+    getTasks();
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+Future<bool> removeTask({@required int index}) async {
   try {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     List<String> tasks = prefs.getStringList('tasks') ?? [];
@@ -36,12 +64,11 @@ Future<bool> removeTask(int index) async {
   }
 }
 
-Future<bool> getTasks() async {
+Future<bool> removeAllTasks() async {
   try {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    List tasks = prefs.getStringList('tasks') ?? [];
-    tasks = tasks.map((e) => e.split("&&--++&&")).toList();
-    Get.find<MainController>().updateMainStete(newTasks: tasks);
+    await prefs.remove('tasks');
+    getTasks();
     return true;
   } catch (e) {
     return false;

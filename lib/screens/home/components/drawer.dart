@@ -1,15 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/routes.dart';
 import 'package:todo/controllers/controller.dart';
 import 'package:todo/controllers/home-controller.dart';
+import 'package:todo/models/tasks.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomeDrawer extends StatelessWidget {
+  bool _isDark;
   @override
   Widget build(BuildContext context) {
+    final Brightness brightnessValue =
+        MediaQuery.of(context).platformBrightness;
+    _isDark = brightnessValue == Brightness.dark;
     return SafeArea(
         child: Column(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -40,15 +48,30 @@ class HomeDrawer extends StatelessWidget {
             ),
             drawerItem("Add new task", FontAwesomeIcons.plusCircle, () async {
               Get.find<HomeController>().advancedDrawerController.hideDrawer();
-              await Future.delayed(Duration(milliseconds: 500));
+              await Future.delayed(Duration(milliseconds: 420));
               Navigator.pushNamed(context, newtask_route);
             }),
-            drawerItem(
-                "Delete all tasks", FontAwesomeIcons.solidTrashAlt, () {}),
+            drawerItem("Delete all tasks", FontAwesomeIcons.solidTrashAlt,
+                () async {
+              Get.find<HomeController>().advancedDrawerController.hideDrawer();
+              await Future.delayed(Duration(milliseconds: 420));
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return removeAllTasksDialog(context);
+                },
+              );
+            }),
             drawerItem("Tasks history", FontAwesomeIcons.clipboardList, () {}),
             drawerItem("Settings", FontAwesomeIcons.cog, () {}),
-            drawerItem("Support", FontAwesomeIcons.handHoldingHeart, () {}),
-            drawerItem("Exit", FontAwesomeIcons.signOutAlt, () {}),
+            drawerItem("Support", FontAwesomeIcons.handHoldingHeart, () {
+              _launchInBrowser('https://github.com/ErfanRht/');
+            }),
+            drawerItem("Exit", FontAwesomeIcons.signOutAlt, () async {
+              Get.find<HomeController>().advancedDrawerController.hideDrawer();
+              await Future.delayed(Duration(milliseconds: 420));
+              SystemNavigator.pop();
+            }),
           ],
         ),
         Padding(
@@ -91,5 +114,72 @@ class HomeDrawer extends StatelessWidget {
             ],
           )),
     );
+  }
+
+  Widget removeAllTasksDialog(BuildContext context) {
+    return AlertDialog(
+      backgroundColor: _isDark ? kDarkBackgroundColor2 : kBackgroundColor,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      title: Text(
+        "Are you sure?",
+        style: GoogleFonts.ubuntu(
+            fontSize: 22.5,
+            fontWeight: FontWeight.w600,
+            color: _isDark ? kBackgroundColor : kDarkBackgroundColor),
+      ),
+      content: Text(
+        "All tasks will be deleted.",
+        style: GoogleFonts.ubuntu(
+            fontSize: 17.5,
+            fontWeight: FontWeight.w500,
+            color: _isDark
+                ? kBackgroundColor.withOpacity(0.8)
+                : kDarkBackgroundColor.withOpacity(0.8)),
+      ),
+      actions: [
+        FlatButton(
+          child: Text(
+            "Cancel",
+            style: GoogleFonts.ubuntu(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: _isDark
+                    ? kBackgroundColor.withOpacity(0.9)
+                    : kDarkBackgroundColor),
+          ),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        FlatButton(
+          child: Text(
+            "Delete",
+            style: GoogleFonts.ubuntu(
+                fontSize: 14,
+                fontWeight: FontWeight.w500,
+                color: Colors.redAccent),
+          ),
+          onPressed: () {
+            removeAllTasks();
+            Navigator.pop(context);
+          },
+        ),
+      ],
+    );
+  }
+
+  Future<void> _launchInBrowser(String url) async {
+    try {
+      await launch(
+        url,
+        forceSafariVC: false,
+        forceWebView: false,
+        headers: <String, String>{'my_header_key': 'my_header_value'},
+      );
+    } catch (e) {
+      throw 'Could not launch $url';
+    }
   }
 }

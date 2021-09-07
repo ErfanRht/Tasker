@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:todo/constants/colors.dart';
+import 'package:todo/constants/routes.dart';
 import 'package:todo/constants/task-colors.dart';
 import 'package:todo/constants/types.dart';
 import 'package:todo/models/set-system-overlay-style.dart';
@@ -53,7 +53,7 @@ class NewTaskScreen extends StatelessWidget {
         newBox2Opacity: 0,
         newCloseButtonOpacity: 0,
         newTextFieldOpacity: 0);
-    Navigator.pop(context);
+    Navigator.pushNamed(context, home_route);
     return null;
   }
 }

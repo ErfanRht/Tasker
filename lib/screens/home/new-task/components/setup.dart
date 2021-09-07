@@ -28,11 +28,11 @@ class NewTaskSetup extends StatelessWidget {
                     textAlign: TextAlign.left,
                     maxLength: 25,
                     style: GoogleFonts.ubuntu(
-                        color: __.color,
+                        color: _isDark ? Colors.white : __.color,
                         fontSize: 25,
                         fontWeight: FontWeight.w700,
                         decorationColor: Colors.white),
-                    cursorColor: __.color,
+                    cursorColor: _isDark ? Colors.white : __.color,
                     cursorHeight: 35,
                     decoration: InputDecoration(
                       border: InputBorder.none,
@@ -46,7 +46,7 @@ class NewTaskSetup extends StatelessWidget {
                               ? Colors.white.withOpacity(0.8)
                               : Colors.grey,
                           fontSize: 21.0),
-                      hintText: "Enter new task",
+                      hintText: "Enter task title",
                     ),
                     onChanged: (value) {
                       Get.find<NewTaskController>()

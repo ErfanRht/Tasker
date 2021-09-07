@@ -18,8 +18,8 @@ class TasksItem extends StatefulWidget {
 
 class _TasksItemState extends State<TasksItem> {
   SlidableController slidableController;
-
-  bool _visible, _delete;
+  SlidableState slidableState;
+  bool _delete;
   double _opacity;
 
   void handleSlideAnimationChanged(Animation<double> slideAnimation) {
@@ -29,18 +29,15 @@ class _TasksItemState extends State<TasksItem> {
   void handleSlideIsOpenChanged(bool isOpen) {
     setState(() {
       _delete = isOpen;
-      if (isOpen) {
-        _removeTask();
-      }
     });
   }
 
   @override
   void initState() {
     super.initState();
-    _visible = false;
     _delete = false;
     _opacity = 0;
+    slidableState = Slidable.of(context);
     slidableController = SlidableController(
       onSlideAnimationChanged: handleSlideAnimationChanged,
       onSlideIsOpenChanged: handleSlideIsOpenChanged,
@@ -62,58 +59,76 @@ class _TasksItemState extends State<TasksItem> {
             padding: EdgeInsets.only(top: 10),
             child: Slidable(
               controller: slidableController,
+              dismissal: SlidableDismissal(
+                child: SlidableDrawerDismissal(
+                  key: Key(_.tasks[widget.index][0]),
+                ),
+                // ignore: missing_return
+                onWillDismiss: (actionType) async {
+                  print('object');
+                  await _removeTask();
+                  return null;
+                },
+              ),
+              key: Key("${_.tasks[widget.index][0]}${widget.index}"),
               actionPane: SlidableBehindActionPane(),
               actionExtentRatio: 1,
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: 70,
-                margin: EdgeInsets.only(left: 25, right: 25),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(22.5),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.1),
-                        blurRadius: 0.001,
-                      )
-                    ],
-                    color: _isDark ? kDarkBackgroundColor : Colors.white),
-                child: Row(
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 10, right: 10),
-                      child: Transform.scale(
-                        scale: 1.2,
-                        child: CircularCheckBox(
-                          activeColor: Colors.grey,
-                          inactiveColor:
-                              colors[int.parse(_.tasks[widget.index][1])],
-                          checkColor: Colors.white,
-                          value: _visible,
-                          onChanged: (value) {
-                            setState(() {
-                              _visible = !_visible;
-                            });
-                          },
+              child: GestureDetector(
+                  onTap: () {
+                    print('tapped');
+                    Slidable.of(context)
+                        .open(actionType: SlideActionType.secondary);
+                  },
+                  child: Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: 70,
+                    margin: EdgeInsets.only(left: 25, right: 25),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(22.5),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.1),
+                            blurRadius: 0.001,
+                          )
+                        ],
+                        color: _isDark ? kDarkBackgroundColor : Colors.white),
+                    child: Row(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: 10, right: 10),
+                          child: Transform.scale(
+                            scale: 1.2,
+                            child: CircularCheckBox(
+                              activeColor: Colors.grey,
+                              inactiveColor:
+                                  colors[int.parse(_.tasks[widget.index][1])],
+                              checkColor: Colors.white,
+                              value: _.tasks[widget.index][2] == 'done',
+                              onChanged: (value) {
+                                updateTask(index: widget.index);
+                              },
+                            ),
+                          ),
                         ),
-                      ),
+                        Text(
+                          _.tasks[widget.index][0],
+                          style: GoogleFonts.ubuntu(
+                            color: _.tasks[widget.index][2] == 'done'
+                                ? Colors.grey
+                                : _isDark
+                                    ? Colors.white
+                                    : colors[
+                                        int.parse(_.tasks[widget.index][1])],
+                            fontWeight: FontWeight.w500,
+                            fontSize: 17.5,
+                            decoration: _.tasks[widget.index][2] == 'done'
+                                ? TextDecoration.lineThrough
+                                : null,
+                          ),
+                        ),
+                      ],
                     ),
-                    Text(
-                      _.tasks[widget.index][0],
-                      style: GoogleFonts.ubuntu(
-                        color: _visible
-                            ? Colors.grey
-                            : _isDark
-                                ? Colors.white
-                                : colors[int.parse(_.tasks[widget.index][1])],
-                        fontWeight: FontWeight.w500,
-                        fontSize: 17.5,
-                        decoration:
-                            _visible ? TextDecoration.lineThrough : null,
-                      ),
-                    )
-                  ],
-                ),
-              ),
+                  )),
               secondaryActions: <Widget>[deleteBox()],
               actions: <Widget>[deleteBox()],
             )),
@@ -192,12 +207,16 @@ class _TasksItemState extends State<TasksItem> {
   }
 
   _removeTask() async {
-    await Future.delayed(Duration(milliseconds: 5000));
+    setState(() {
+      _delete = true;
+    });
+    await Future.delayed(Duration(milliseconds: 3333));
     if (_delete) {
       setState(() {
         _delete = false;
       });
-      removeTask(widget.index);
+      removeTask(index: widget.index);
     }
+    return null;
   }
 }
