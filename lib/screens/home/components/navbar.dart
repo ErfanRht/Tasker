@@ -47,8 +47,11 @@ class HomeNavbar extends StatelessWidget {
                 ),
                 onPressed: () {
                   homeController.advancedDrawerController.showDrawer();
-                  setSystemUIOverlayStyle(
-                      systemUIOverlayStyle: SystemUIOverlayStyle.BLUE);
+                  _isDark
+                      ? setSystemUIOverlayStyle(
+                          systemUIOverlayStyle: SystemUIOverlayStyle.DARK)
+                      : setSystemUIOverlayStyle(
+                          systemUIOverlayStyle: SystemUIOverlayStyle.BLUE);
                 },
               ),
             ),

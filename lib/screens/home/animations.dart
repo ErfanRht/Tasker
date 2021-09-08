@@ -9,6 +9,7 @@ class HomeAnimationsController extends GetxController {
   EdgeInsets titlePadding = EdgeInsets.only(top: 20, left: 25);
   // tasks:
   double tasksTitleOpacity = 0;
+  double notFoundOpacity = 0;
   // floating button:
   double floatingButtonOpacity = 0;
 
@@ -18,6 +19,7 @@ class HomeAnimationsController extends GetxController {
       double newNavbarOpacity2,
       double newTitleOpacity,
       double newTasksTitleOpacity,
+      double newNotFoundOpacity,
       double newFloatingButtonOpacity,
       EdgeInsets newTitlePadding}) {
     navbarOpacity1 =
@@ -27,6 +29,8 @@ class HomeAnimationsController extends GetxController {
     titleOpacity = newTitleOpacity != null ? newTitleOpacity : titleOpacity;
     tasksTitleOpacity =
         newTasksTitleOpacity != null ? newTasksTitleOpacity : tasksTitleOpacity;
+    notFoundOpacity =
+        newNotFoundOpacity != null ? newNotFoundOpacity : notFoundOpacity;
     floatingButtonOpacity = newFloatingButtonOpacity != null
         ? newFloatingButtonOpacity
         : floatingButtonOpacity;
@@ -52,6 +56,10 @@ startHomeAnimations() async {
   await Future.delayed(Duration(milliseconds: 500));
   Get.find<HomeAnimationsController>().updateHomeAnimations(
     newTasksTitleOpacity: 1,
+  );
+  await Future.delayed(Duration(milliseconds: 500));
+  Get.find<HomeAnimationsController>().updateHomeAnimations(
+    newNotFoundOpacity: 1,
   );
   await Future.delayed(Duration(milliseconds: 500));
   Get.find<HomeAnimationsController>().updateHomeAnimations(

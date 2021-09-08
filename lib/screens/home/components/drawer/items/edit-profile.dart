@@ -110,7 +110,7 @@ class EditProfileDialog extends StatelessWidget {
                             borderSide:
                                 BorderSide(color: Colors.cyan, width: 2),
                           ),
-                          hintText: "Email",
+                          hintText: _.userEmail != "" ? _.userEmail : "Email",
                           hintStyle: GoogleFonts.ubuntu(
                               fontSize: 17.5,
                               fontWeight: FontWeight.w500,

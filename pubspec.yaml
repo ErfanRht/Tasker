@@ -23,6 +23,7 @@ dependencies:
   circular_check_box: ^1.0.4
   ms_undraw: ^3.0.1+1
   url_launcher: ^6.0.10
+  change_app_package_name: ^1.0.0
 
 dev_dependencies:
   flutter_test:

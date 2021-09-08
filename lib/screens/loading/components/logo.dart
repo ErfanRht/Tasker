@@ -28,7 +28,7 @@ class LoadingLogo extends StatelessWidget {
             opacity: _.textOpacity,
             duration: _.animationSpeed,
             child: Text(
-              "ToDo app",
+              "Tasker",
               style: GoogleFonts.ubuntu(
                   color: isDark ? Colors.white : kSecondaryColor,
                   fontWeight: FontWeight.w900,

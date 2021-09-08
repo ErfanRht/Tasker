@@ -4,7 +4,7 @@ import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/routes.dart';
 import 'package:todo/controllers/main-controller.dart';
 import 'package:todo/screens/home/home.dart';
-import 'package:todo/screens/home/new-task/new-task.dart';
+import 'package:todo/screens/new-task/new-task.dart';
 import 'package:todo/screens/loading/loading.dart';
 import 'package:todo/screens/welcome/welcome.dart';
 
