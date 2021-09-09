@@ -11,31 +11,23 @@
 
 ## Screenshots
 <p float="left">
-    <img src="./screenshots/Screenshot1-light.jpg" height="400" />
-  &ensp;
     <img src="./screenshots/Screenshot2-light.jpg" height="400" />
+  &ensp;
+      <img src="./screenshots/Screenshot5-light.jpg" height="400" />
+  &ensp;
+      <img src="./screenshots/Screenshot4-light.jpg" height="400" />
   &ensp;
     <img src="./screenshots/Screenshot3-light.jpg" height="400" />
   &ensp;
-    <img src="./screenshots/Screenshot4-light.jpg" height="400" />
-  &ensp;
-    <img src="./screenshots/Screenshot5-light.jpg" height="400" />
-  &ensp;
-    <img src="./screenshots/Screenshot6-light.jpg" height="400" />
-  &ensp;
 </p>
 <p float="left">
-    <img src="./screenshots/Screenshot1-dark.jpg" height="400" />
-  &ensp;
     <img src="./screenshots/Screenshot2-dark.jpg" height="400" />
   &ensp;
+      <img src="./screenshots/Screenshot5-dark.jpg" height="400" />
+  &ensp;
+      <img src="./screenshots/Screenshot4-dark.jpg" height="400" />
+  &ensp;
     <img src="./screenshots/Screenshot3-dark.jpg" height="400" />
-  &ensp;
-    <img src="./screenshots/Screenshot4-dark.jpg" height="400" />
-  &ensp;
-    <img src="./screenshots/Screenshot5-dark.jpg" height="400" />
-  &ensp;
-    <img src="./screenshots/Screenshot6-dark.jpg" height="400" />
   &ensp;
 </p>
 
