@@ -1,4 +1,4 @@
-# ToDo-list
+# Tasker
 > An open source task manager (todo list) app, developed using Dart language and Flutter framework.
 
 ## Screenrecords
