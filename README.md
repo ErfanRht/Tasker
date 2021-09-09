@@ -1,5 +1,5 @@
 # ToDo-list
-> An open source ToDo-list app, developed using Dart language and Flutter framework.
+> An open source task manager (todo list) app, developed using Dart language and Flutter framework.
 
 ## Screenrecords
 <p float="left">
