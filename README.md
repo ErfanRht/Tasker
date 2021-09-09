@@ -1,15 +1,42 @@
 # ToDo-list
 > An open source ToDo-list app, developed using Dart language and Flutter framework.
 
+## Screenrecords
+<p float="left">
+  <img src="https://github.com/ErfanRht/Tasker/blob/master/screenshots/videos/Screenrecord-dark.gif?raw=true" height="600" />
+  &ensp;
+  <img src="https://github.com/ErfanRht/Tasker/blob/master/screenshots/videos/Screenrecord-light.gif?raw=true" height="600" />
+  &ensp;
+</p>
+
 ## Screenshots
 <p float="left">
-  <img src="https://github.com/ErfanRht/ToDo-list/blob/master/screenshots/Screenrecorder-2021-09-04-18-18-19-484(1).gif" height="400" />
+    <img src="./screenshots/Screenshot1-light.jpg" height="400" />
   &ensp;
-  <img src="./screenshots/Screenshot_2021-09-04-17-50-09-904_com.example.todo.jpg" height="400" />
+    <img src="./screenshots/Screenshot2-light.jpg" height="400" />
   &ensp;
-  <img src="./screenshots/Screenshot_2021-09-04-17-50-38-178_com.example.todo.jpg" height="400" /> 
+    <img src="./screenshots/Screenshot3-light.jpg" height="400" />
   &ensp;
-  <img src="./screenshots/Screenshot_2021-09-04-17-50-49-350_com.example.todo.jpg" height="400" /> 
+    <img src="./screenshots/Screenshot4-light.jpg" height="400" />
+  &ensp;
+    <img src="./screenshots/Screenshot5-light.jpg" height="400" />
+  &ensp;
+    <img src="./screenshots/Screenshot6-light.jpg" height="400" />
+  &ensp;
+</p>
+<p float="left">
+    <img src="./screenshots/Screenshot1-dark.jpg" height="400" />
+  &ensp;
+    <img src="./screenshots/Screenshot2-dark.jpg" height="400" />
+  &ensp;
+    <img src="./screenshots/Screenshot3-dark.jpg" height="400" />
+  &ensp;
+    <img src="./screenshots/Screenshot4-dark.jpg" height="400" />
+  &ensp;
+    <img src="./screenshots/Screenshot5-dark.jpg" height="400" />
+  &ensp;
+    <img src="./screenshots/Screenshot6-dark.jpg" height="400" />
+  &ensp;
 </p>
 
 [more screenshot...](./screenshots)
