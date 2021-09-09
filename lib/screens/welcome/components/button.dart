@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/routes.dart';
-import 'package:todo/models/user-name.dart';
+import 'package:todo/controllers/main-controller.dart';
+import 'package:todo/models/user/user-name.dart';
 
 class LoadingButton extends StatefulWidget {
   bool isDark;
@@ -22,7 +24,8 @@ class _LoadingButtonState extends State<LoadingButton> {
       RoundedLoadingButtonController();
 
   void _setName() async {
-    await setUserName().then((value) {
+    await setUserName(userName: Get.find<MainController>().userName)
+        .then((value) {
       if (value) {
         Timer(Duration(seconds: 2), () {
           _btnController.success();

@@ -5,7 +5,7 @@ import 'package:circular_check_box/circular_check_box.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ms_undraw/ms_undraw.dart';
 import 'package:todo/constants/colors.dart';
-import 'package:todo/controllers/controller.dart';
+import 'package:todo/controllers/main-controller.dart';
 import 'package:todo/screens/home/components/tasks/item.dart';
 
 class HomeTasksItems extends StatefulWidget {
@@ -59,7 +59,7 @@ class _HomeTasksItemsState extends State<HomeTasksItems> {
                         color: _isDark
                             ? kBackgroundColor.withOpacity(0.8)
                             : kSecondaryColor,
-                        illustration: UnDrawIllustration.empty,
+                        illustration: UnDrawIllustration.no_data,
                         placeholder: Padding(
                           padding: EdgeInsets.only(top: 100),
                           child: SpinKitDoubleBounce(

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:todo/controllers/controller.dart';
-import 'package:todo/controllers/newtask-controller.dart';
+import 'package:todo/controllers/main-controller.dart';
+import 'package:todo/controllers/new-task/newtask-controller.dart';
 
 Future<bool> getTasks() async {
   try {

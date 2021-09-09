@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo/constants/colors.dart';
-import 'package:todo/controllers/controller.dart';
+import 'package:todo/controllers/main-controller.dart';
 import 'package:todo/screens/home/animations.dart';
 
 class HomeTitleText extends StatelessWidget {

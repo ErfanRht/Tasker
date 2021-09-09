@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/routes.dart';
-import 'package:todo/controllers/controller.dart';
+import 'package:todo/controllers/main-controller.dart';
 import 'package:todo/models/set-system-overlay-style.dart';
 import 'package:todo/models/tasks.dart';
 import 'package:todo/constants/types.dart';
-import 'package:todo/models/user-name.dart';
+import 'package:todo/models/user/user-email.dart';
+import 'package:todo/models/user/user-name.dart';
 import 'package:todo/screens/loading/animations.dart';
 import 'package:todo/screens/loading/components/logo.dart';
 import 'package:todo/screens/loading/components/spinkit.dart';
@@ -81,6 +82,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
               newUserName: response,
             );
           });
+          getUserEmail();
 
           nextRoute = home_route;
         }

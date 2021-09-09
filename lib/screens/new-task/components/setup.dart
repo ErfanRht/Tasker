@@ -3,9 +3,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo/constants/colors.dart';
-import 'package:todo/screens/home/new-task/animations.dart';
-import 'package:todo/screens/home/new-task/components/colorpicker.dart';
-import '../../../../controllers/newtask-controller.dart';
+import 'package:todo/screens/new-task/animations.dart';
+import 'package:todo/screens/new-task/components/colorpicker.dart';
+import '../../../controllers/new-task/newtask-controller.dart';
 
 class NewTaskSetup extends StatelessWidget {
   Duration _animationDuration = Duration(milliseconds: 500);

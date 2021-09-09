@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/task-colors.dart';
-import 'package:todo/controllers/controller.dart';
+import 'package:todo/controllers/main-controller.dart';
 import 'package:todo/models/tasks.dart';
 
 class TasksItem extends StatefulWidget {
@@ -67,68 +67,61 @@ class _TasksItemState extends State<TasksItem> {
                 onWillDismiss: (actionType) async {
                   print('object');
                   await _removeTask();
-                  return null;
+                  return true;
                 },
               ),
               key: Key("${_.tasks[widget.index][0]}${widget.index}"),
               actionPane: SlidableBehindActionPane(),
               actionExtentRatio: 1,
-              child: GestureDetector(
-                  onTap: () {
-                    print('tapped');
-                    Slidable.of(context)
-                        .open(actionType: SlideActionType.secondary);
-                  },
-                  child: Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 70,
-                    margin: EdgeInsets.only(left: 25, right: 25),
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(22.5),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.grey.withOpacity(0.1),
-                            blurRadius: 0.001,
-                          )
-                        ],
-                        color: _isDark ? kDarkBackgroundColor : Colors.white),
-                    child: Row(
-                      children: [
-                        Padding(
-                          padding: EdgeInsets.only(left: 10, right: 10),
-                          child: Transform.scale(
-                            scale: 1.2,
-                            child: CircularCheckBox(
-                              activeColor: Colors.grey,
-                              inactiveColor:
-                                  colors[int.parse(_.tasks[widget.index][1])],
-                              checkColor: Colors.white,
-                              value: _.tasks[widget.index][2] == 'done',
-                              onChanged: (value) {
-                                updateTask(index: widget.index);
-                              },
-                            ),
-                          ),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: 70,
+                margin: EdgeInsets.only(left: 25, right: 25),
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(22.5),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.1),
+                        blurRadius: 0.001,
+                      )
+                    ],
+                    color: _isDark ? kDarkBackgroundColor : Colors.white),
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 10, right: 10),
+                      child: Transform.scale(
+                        scale: 1.2,
+                        child: CircularCheckBox(
+                          activeColor: Colors.grey,
+                          inactiveColor:
+                              colors[int.parse(_.tasks[widget.index][1])],
+                          checkColor: Colors.white,
+                          value: _.tasks[widget.index][2] == 'done',
+                          onChanged: (value) {
+                            updateTask(index: widget.index);
+                          },
                         ),
-                        Text(
-                          _.tasks[widget.index][0],
-                          style: GoogleFonts.ubuntu(
-                            color: _.tasks[widget.index][2] == 'done'
-                                ? Colors.grey
-                                : _isDark
-                                    ? Colors.white
-                                    : colors[
-                                        int.parse(_.tasks[widget.index][1])],
-                            fontWeight: FontWeight.w500,
-                            fontSize: 17.5,
-                            decoration: _.tasks[widget.index][2] == 'done'
-                                ? TextDecoration.lineThrough
-                                : null,
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                  )),
+                    Text(
+                      _.tasks[widget.index][0],
+                      style: GoogleFonts.ubuntu(
+                        color: _.tasks[widget.index][2] == 'done'
+                            ? Colors.grey
+                            : _isDark
+                                ? Colors.white
+                                : colors[int.parse(_.tasks[widget.index][1])],
+                        fontWeight: FontWeight.w500,
+                        fontSize: 17.5,
+                        decoration: _.tasks[widget.index][2] == 'done'
+                            ? TextDecoration.lineThrough
+                            : null,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               secondaryActions: <Widget>[deleteBox()],
               actions: <Widget>[deleteBox()],
             )),
@@ -179,7 +172,9 @@ class _TasksItemState extends State<TasksItem> {
                 ]),
             child: Center(
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Slidable.of(context).close();
+                },
                 child: Text(
                   'UNDO',
                   style: GoogleFonts.ubuntu(
@@ -210,7 +205,7 @@ class _TasksItemState extends State<TasksItem> {
     setState(() {
       _delete = true;
     });
-    await Future.delayed(Duration(milliseconds: 3333));
+    await Future.delayed(Duration(milliseconds: 3500));
     if (_delete) {
       setState(() {
         _delete = false;

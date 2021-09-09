@@ -5,9 +5,9 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:rounded_loading_button/rounded_loading_button.dart';
 import 'package:todo/constants/colors.dart';
-import 'package:todo/controllers/newtask-controller.dart';
+import 'package:todo/controllers/new-task/newtask-controller.dart';
 import 'package:todo/models/tasks.dart';
-import 'package:todo/screens/home/new-task/animations.dart';
+import 'package:todo/screens/new-task/animations.dart';
 
 class NewTaskButton extends StatefulWidget {
   @override

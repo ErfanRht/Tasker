@@ -5,11 +5,11 @@ import 'package:todo/constants/routes.dart';
 import 'package:todo/constants/task-colors.dart';
 import 'package:todo/constants/types.dart';
 import 'package:todo/models/set-system-overlay-style.dart';
-import 'package:todo/screens/home/new-task/animations.dart';
-import 'package:todo/screens/home/new-task/components/button.dart';
-import 'package:todo/screens/home/new-task/components/close.dart';
-import 'package:todo/controllers/newtask-controller.dart';
-import 'package:todo/screens/home/new-task/components/setup.dart';
+import 'package:todo/screens/new-task/animations.dart';
+import 'package:todo/screens/new-task/components/button.dart';
+import 'package:todo/screens/new-task/components/close.dart';
+import 'package:todo/controllers/new-task/newtask-controller.dart';
+import 'package:todo/screens/new-task/components/setup.dart';
 
 class NewTaskScreen extends StatelessWidget {
   NewTaskController newTaskController = Get.put(NewTaskController());

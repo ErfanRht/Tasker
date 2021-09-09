@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/types.dart';
 import 'package:todo/models/set-system-overlay-style.dart';
-import 'package:todo/screens/home/new-task/animations.dart';
+import 'package:todo/screens/new-task/animations.dart';
 
 class NewTaskCloseButton extends StatelessWidget {
   Duration _animationDuration = Duration(milliseconds: 500);

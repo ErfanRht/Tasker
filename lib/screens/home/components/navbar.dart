@@ -6,7 +6,7 @@ import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/types.dart';
 import 'package:todo/models/set-system-overlay-style.dart';
 import 'package:todo/screens/home/animations.dart';
-import 'package:todo/controllers/home-controller.dart';
+import 'package:todo/controllers/home/home-controller.dart';
 
 class HomeNavbar extends StatelessWidget {
   HomeController homeController = Get.put(HomeController());

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/routes.dart';
-import 'package:todo/controllers/controller.dart';
+import 'package:todo/controllers/main-controller.dart';
 import 'package:todo/screens/home/home.dart';
 import 'package:todo/screens/home/new-task/new-task.dart';
 import 'package:todo/screens/loading/loading.dart';
@@ -15,7 +15,7 @@ void main() {
 // ignore: must_be_immutable
 class App extends StatelessWidget {
   MainController mainController = Get.put(MainController());
-  String initRoute = loading_route;
+  final String initRoute = loading_route;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
