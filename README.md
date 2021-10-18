@@ -39,7 +39,7 @@ Please file any issues, bugs or feature request [here](https://github.com/ErfanR
 
 ## License
 
-This project is licensed under the [Apache-2.0 License](https://github.com/ErfanRht/Tasker/blob/master/LICENSE)
+This project is licensed under the [Apache-2.0 License](https://github.com/ErfanRht/Tasker/blob/master/LICENSE).
 
 ## Author
 
