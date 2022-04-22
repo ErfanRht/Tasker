@@ -1,6 +1,8 @@
 # Tasker
 > An open source task manager (todo list) app, developed using Dart language and Flutter framework.
 
+[![App logo](/screenshots/logo.png)]
+
 ## Screenrecords
 <p float="left">
   <img src="https://github.com/ErfanRht/Tasker/blob/master/screenshots/videos/Screenrecord-dark.gif?raw=true" height="600" />
