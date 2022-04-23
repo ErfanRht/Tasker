@@ -1,37 +1,24 @@
 # Tasker
+
 > An open source task manager (todo list) app, developed using Dart language and Flutter framework.
 
+<p float="center">
+    <img src="./screenshots/mockups/Tasker_Light.jpg" height="400" />
+  &ensp;
+</p>
+<p float="left">
+    <img src="./screenshots/mockups/Tasker_Dark.jpg" height="400" />
+  &ensp;
+</p>
+
 ## Screenrecords
+
 <p float="left">
   <img src="https://github.com/ErfanRht/Tasker/blob/master/screenshots/videos/Screenrecord-dark.gif?raw=true" height="600" />
   &ensp;
   <img src="https://github.com/ErfanRht/Tasker/blob/master/screenshots/videos/Screenrecord-light.gif?raw=true" height="600" />
   &ensp;
 </p>
-
-## Screenshots
-<p float="left">
-    <img src="./screenshots/Screenshot2-light.jpg" height="400" />
-  &ensp;
-      <img src="./screenshots/Screenshot5-light.jpg" height="400" />
-  &ensp;
-      <img src="./screenshots/Screenshot4-light.jpg" height="400" />
-  &ensp;
-    <img src="./screenshots/Screenshot3-light.jpg" height="400" />
-  &ensp;
-</p>
-<p float="left">
-    <img src="./screenshots/Screenshot2-dark.jpg" height="400" />
-  &ensp;
-      <img src="./screenshots/Screenshot5-dark.jpg" height="400" />
-  &ensp;
-      <img src="./screenshots/Screenshot4-dark.jpg" height="400" />
-  &ensp;
-    <img src="./screenshots/Screenshot3-dark.jpg" height="400" />
-  &ensp;
-</p>
-
-[more screenshot...](./screenshots)
 
 ## Issues
 
