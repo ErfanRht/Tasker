@@ -14,7 +14,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/ErfanRht/Tasker?style=social)](https://github.com/ErfanRht/Tasker/issues) 
 [![GitHub license](https://img.shields.io/github/license/ErfanRht/Tasker?style=social)](https://github.com/ErfanRht/Tasker/blob/master/LICENSE) 
 
-<p float="center">
+<p align="center">
     <img src="./screenshots/mockups/Tasker_Light.jpg" width="48%" />
   &ensp;
     <img src="./screenshots/mockups/Tasker_Dark.jpg" width="48%" />
