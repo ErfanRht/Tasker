@@ -424,6 +424,7 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
+<<<<<<< HEAD
   rounded_loading_button:
     dependency: "direct main"
     description:
@@ -432,14 +433,28 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.0"
+=======
+  rounded_loading_button_plus:
+    dependency: "direct main"
+    description:
+      name: rounded_loading_button_plus
+      sha256: "8baad9b66c4a81b02b597edf7691cf78f7267a999c08a68937e391af7b2da653"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.0.1"
+>>>>>>> fdbbfb7 (fix: replace rounded_loading_button to rounded_loading_button_plus)
   rxdart:
     dependency: transitive
     description:
       name: rxdart
+<<<<<<< HEAD
       sha256: "2ef8b4e91cb3b55d155e0e34eeae0ac7107974e451495c955ac04ddee8cc21fd"
+=======
+      sha256: "5c3004a4a8dbb94bd4bf5412a4def4acdaa12e12f269737a5751369e12d1a962"
+>>>>>>> fdbbfb7 (fix: replace rounded_loading_button to rounded_loading_button_plus)
       url: "https://pub.dev"
     source: hosted
-    version: "0.26.0"
+    version: "0.28.0"
   shared_preferences:
     dependency: "direct main"
     description:
