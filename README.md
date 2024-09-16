@@ -30,9 +30,28 @@
   &ensp;
 </p>
 
-## Contribute
-If you have an issue or found a bug, please raise a GitHub issue [here](https://github.com/ErfanRht/Tasker/issues). Pull requests are also welcome.
+## Download
+  You can simply download it for Android from [Here](https://github.com/ErfanRht/Tasker/releases/tag/1.0.1).
 
+## Contribute
+
+I welcome contributions from the community! If you have an idea for an enhancement or have found a bug, you can raise a GitHub issue [here](https://github.com/ErfanRht/Tasker/issues) or you can follow these steps to contribute:
+
+1. **Fork the repository**
+2. **Create a new branch**
+    ```sh
+    git checkout -b feature/my-new-feature
+    ```
+3. **Commit your changes**
+    ```sh
+    git commit -am 'Add some feature'
+    ```
+4. **Push to the branch**
+    ```sh
+    git push origin feature/my-new-feature
+    ```
+5. **Create a new Pull Request**
+   
 ## License
 This project is licensed under the [Apache-2.0 License](https://github.com/ErfanRht/Tasker/blob/master/LICENSE).
 

@@ -8,10 +8,10 @@ class LoadingAnimationsController extends GetxController {
   Duration allAnimationTimes = Duration(milliseconds: 4000);
 
   updateLoadingAnimations(
-      {double newLogoOpacity,
-      double newTextOpacity,
-      double newSpinkitOpacity,
-      EdgeInsets newLogoTextPadding}) {
+      {double? newLogoOpacity,
+      double? newTextOpacity,
+      double? newSpinkitOpacity,
+      EdgeInsets? newLogoTextPadding}) {
     logoOpacity = newLogoOpacity != null ? newLogoOpacity : logoOpacity;
     textOpacity = newTextOpacity != null ? newTextOpacity : textOpacity;
     spinkitOpacity =

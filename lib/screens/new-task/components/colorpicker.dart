@@ -11,7 +11,7 @@ class NewTaskColorPicker extends StatefulWidget {
 }
 
 class _NewTaskColorPickerState extends State<NewTaskColorPicker> {
-  int selectedColor;
+  int? selectedColor;
   @override
   void initState() {
     super.initState();
@@ -61,7 +61,7 @@ class _NewTaskColorPickerState extends State<NewTaskColorPicker> {
             TextButton(
               onPressed: () {
                 Get.find<NewTaskController>().updateNewTask(
-                    newColor: colors[selectedColor],
+                    newColor: colors[selectedColor!],
                     newColorNum: selectedColor);
                 Navigator.pop(context);
               },

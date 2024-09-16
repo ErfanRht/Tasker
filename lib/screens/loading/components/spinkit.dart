@@ -5,7 +5,7 @@ import 'package:todo/constants/colors.dart';
 import 'package:todo/screens/loading/animations.dart';
 
 class LoadingSpinkit extends StatelessWidget {
-  bool isDark;
+  bool? isDark;
   LoadingSpinkit({this.isDark});
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class LoadingSpinkit extends StatelessWidget {
           opacity: _.spinkitOpacity,
           duration: Duration(milliseconds: 666),
           child: SpinKitWave(
-            color: isDark ? Colors.white : kSecondaryColor,
+            color: isDark ?? false ? Colors.white : kSecondaryColor,
             size: 30,
           ),
         );

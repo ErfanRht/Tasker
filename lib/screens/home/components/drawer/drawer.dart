@@ -7,12 +7,12 @@ import 'package:todo/controllers/main-controller.dart';
 import 'package:todo/screens/home/components/drawer/items/items.dart';
 
 class HomeDrawer extends StatelessWidget {
-  bool _isDark;
+  bool? _isDark;
   @override
   Widget build(BuildContext context) {
     final Brightness brightnessValue =
         MediaQuery.of(context).platformBrightness;
-    _isDark = brightnessValue == Brightness.dark;
+    _isDark  = brightnessValue == Brightness.dark;
     return GetBuilder<MainController>(builder: (_) {
       return SafeArea(
           child: Column(

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomeDrawerItem extends StatelessWidget {
   String title;
-  IconData icon;
-  Function onTap;
+  FaIconData icon;
+  GestureTapCallback? onTap;
   HomeDrawerItem(
-      {@required this.title, @required this.icon, @required this.onTap});
+      {required this.title, required this.icon, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,7 @@ class HomeDrawerItem extends StatelessWidget {
           padding: EdgeInsets.only(top: 12.5, bottom: 12.5, left: 40),
           child: Row(
             children: [
-              Icon(
+              FaIcon(
                 icon,
                 color: Colors.white.withOpacity(0.925),
                 size: 17.5,

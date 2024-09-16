@@ -16,7 +16,7 @@ class NewTaskScreen extends StatelessWidget {
   NewTaskAnimationsController newTaskAnimationsController = Get.put(
     NewTaskAnimationsController(),
   );
-  bool _isDark;
+  bool _isDark = false;
   @override
   Widget build(BuildContext context) {
     final Brightness brightnessValue =

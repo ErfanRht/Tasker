@@ -9,11 +9,11 @@ class NewTaskAnimationsController extends GetxController {
   double addButtonOpacity = 0;
 
   updateAnimations(
-      {double newCloseButtonOpacity,
-      double newTextFieldOpacity,
-      double newBox1Opacity,
-      double newBox2Opacity,
-      double newAddButtonOpacity}) {
+      {double? newCloseButtonOpacity,
+      double? newTextFieldOpacity,
+      double? newBox1Opacity,
+      double? newBox2Opacity,
+      double? newAddButtonOpacity}) {
     closeButtonOpacity = newCloseButtonOpacity != null
         ? newCloseButtonOpacity
         : closeButtonOpacity;

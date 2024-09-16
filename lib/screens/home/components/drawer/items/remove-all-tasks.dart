@@ -4,7 +4,7 @@ import 'package:todo/constants/colors.dart';
 import 'package:todo/models/tasks.dart';
 
 class RemoveAllTasksDialog extends StatelessWidget {
-  bool _isDark;
+  bool? _isDark;
   @override
   Widget build(BuildContext context) {
     final Brightness brightnessValue =
@@ -13,7 +13,7 @@ class RemoveAllTasksDialog extends StatelessWidget {
     return StatefulBuilder(
       builder: (context, setState) {
         return AlertDialog(
-          backgroundColor: _isDark ? kDarkBackgroundColor2 : kBackgroundColor,
+          backgroundColor: _isDark ?? false ? kDarkBackgroundColor2 : kBackgroundColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
           ),
@@ -22,25 +22,25 @@ class RemoveAllTasksDialog extends StatelessWidget {
             style: GoogleFonts.ubuntu(
                 fontSize: 22.5,
                 fontWeight: FontWeight.w600,
-                color: _isDark ? kBackgroundColor : kDarkBackgroundColor),
+                color: _isDark ?? false ? kBackgroundColor : kDarkBackgroundColor),
           ),
           content: Text(
             "All tasks will be deleted.",
             style: GoogleFonts.ubuntu(
                 fontSize: 17.5,
                 fontWeight: FontWeight.w500,
-                color: _isDark
+                color: _isDark ?? false
                     ? kBackgroundColor.withOpacity(0.8)
                     : kDarkBackgroundColor.withOpacity(0.8)),
           ),
           actions: [
-            FlatButton(
+            TextButton(
               child: Text(
                 "Cancel",
                 style: GoogleFonts.ubuntu(
                     fontSize: 14,
                     fontWeight: FontWeight.w500,
-                    color: _isDark
+                    color: _isDark ?? false
                         ? kBackgroundColor.withOpacity(0.9)
                         : kDarkBackgroundColor),
               ),
@@ -48,7 +48,7 @@ class RemoveAllTasksDialog extends StatelessWidget {
                 Navigator.pop(context);
               },
             ),
-            FlatButton(
+            TextButton(
               child: Text(
                 "Delete",
                 style: GoogleFonts.ubuntu(

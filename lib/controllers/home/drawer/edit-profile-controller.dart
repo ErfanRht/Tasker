@@ -9,23 +9,23 @@ class EditProfileController extends GetxController {
 
   bool validationEmail = true;
 
-  updateUserName({@required String name}) {
+  updateUserName({ required String name}) {
     userName = name;
     update();
   }
 
-  updateUserEmail({@required String email}) {
+  updateUserEmail({required String email}) {
     userEmail = email;
     update();
   }
 
-  updateUserAge({@required String age}) {
+  updateUserAge({required String age}) {
     userAge = age;
     update();
   }
 
   updateValidations({
-    @required bool newValidationEmail,
+    required bool newValidationEmail,
   }) {
     validationEmail = newValidationEmail;
     print(validationEmail);
@@ -42,7 +42,7 @@ class EditProfileController extends GetxController {
   }
 }
 
-Future<bool> editProfileChecker({@required String email}) async {
+Future<bool> editProfileChecker({required String email}) async {
   bool response = false;
   await EmailValidation(email: email).then((bool value) {
     if (email == "") {

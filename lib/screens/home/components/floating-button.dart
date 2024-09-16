@@ -6,7 +6,7 @@ import 'package:todo/screens/home/animations.dart';
 
 class HomeFloatingButton extends StatelessWidget {
   Duration _duration = Duration(milliseconds: 500);
-  bool _isDark;
+  bool? _isDark;
   @override
   Widget build(BuildContext context) {
     final Brightness brightnessValue =
@@ -23,10 +23,10 @@ class HomeFloatingButton extends StatelessWidget {
             },
             child: Icon(
               Icons.add_rounded,
-              size: _isDark ? 33 : 30,
-              color: _isDark ? kDarkPrimaryColor : Colors.white,
+              size: _isDark ?? false ? 33 : 30,
+              color: _isDark ?? false  ? kDarkPrimaryColor : Colors.white,
             ),
-            backgroundColor: _isDark ? kBackgroundColor : kSecondaryColor,
+            backgroundColor: _isDark ?? false ? kBackgroundColor : kSecondaryColor,
             highlightElevation: 3,
           ),
         );

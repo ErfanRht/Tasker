@@ -5,7 +5,7 @@ import 'package:todo/constants/colors.dart';
 import 'package:todo/screens/loading/animations.dart';
 
 class LoadingLogo extends StatelessWidget {
-  bool isDark;
+  bool? isDark;
   LoadingLogo({this.isDark});
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class LoadingLogo extends StatelessWidget {
               duration: _.animationSpeed,
               padding: _.logoTextpadding,
               child: Icon(Icons.check_circle_outline_rounded,
-                  color: isDark ? Colors.white : kSecondaryColor,
+                  color: isDark ?? false ? Colors.white : kSecondaryColor,
                   size: MediaQuery.of(context).size.width * 0.75),
             ),
           ),
@@ -30,7 +30,7 @@ class LoadingLogo extends StatelessWidget {
             child: Text(
               "Tasker",
               style: GoogleFonts.ubuntu(
-                  color: isDark ? Colors.white : kSecondaryColor,
+                  color: isDark ?? false ? Colors.white : kSecondaryColor,
                   fontWeight: FontWeight.w900,
                   fontSize: 30),
             ),

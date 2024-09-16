@@ -16,7 +16,7 @@ Future<bool> getTasks() async {
   }
 }
 
-Future<bool> addTask({@required String text, @required int colorNum}) async {
+Future<bool> addTask({required String text, required int colorNum}) async {
   try {
     print(text);
     if (text == "") {
@@ -34,7 +34,7 @@ Future<bool> addTask({@required String text, @required int colorNum}) async {
   }
 }
 
-Future<bool> updateTask({@required int index}) async {
+Future<bool> updateTask({required int index}) async {
   try {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     List<String> tasks = prefs.getStringList('tasks') ?? [];
@@ -51,7 +51,7 @@ Future<bool> updateTask({@required int index}) async {
   }
 }
 
-Future<bool> removeTask({@required int index}) async {
+Future<bool> removeTask({required int index}) async {
   try {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     List<String> tasks = prefs.getStringList('tasks') ?? [];

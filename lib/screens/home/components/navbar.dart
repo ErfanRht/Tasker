@@ -11,7 +11,7 @@ import 'package:todo/controllers/home/home-controller.dart';
 class HomeNavbar extends StatelessWidget {
   HomeController homeController = Get.put(HomeController());
   Duration _animationSpeed = Duration(milliseconds: 300);
-  bool _isDark;
+  bool ? _isDark;
   @override
   Widget build(BuildContext context) {
     final Brightness brightnessValue =
@@ -32,11 +32,11 @@ class HomeNavbar extends StatelessWidget {
                   builder: (_, value, __) {
                     return AnimatedSwitcher(
                       duration: Duration(milliseconds: 250),
-                      child: Icon(
+                      child: FaIcon(
                         value.visible
                             ? FontAwesomeIcons.times
                             : FontAwesomeIcons.stream,
-                        color: _isDark
+                        color: _isDark ?? false
                             ? kBackgroundColor
                             : Colors.black.withOpacity(0.40),
                         size: 22.2,
@@ -47,7 +47,7 @@ class HomeNavbar extends StatelessWidget {
                 ),
                 onPressed: () {
                   homeController.advancedDrawerController.showDrawer();
-                  _isDark
+                  _isDark ?? false
                       ? setSystemUIOverlayStyle(
                           systemUIOverlayStyle: SystemUIOverlayStyle.DARK)
                       : setSystemUIOverlayStyle(
@@ -59,9 +59,9 @@ class HomeNavbar extends StatelessWidget {
               duration: _animationSpeed,
               opacity: _.navbarOpacity2,
               child: IconButton(
-                icon: Icon(
+                icon: FaIcon(
                   FontAwesomeIcons.search,
-                  color: _isDark
+                  color: _isDark ?? false
                       ? kBackgroundColor
                       : Colors.black.withOpacity(0.40),
                   size: 22.2,
