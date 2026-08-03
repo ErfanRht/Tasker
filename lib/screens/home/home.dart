@@ -17,13 +17,13 @@ class HomeScreen extends StatelessWidget {
   HomeAnimationsController homeAnimationsController =
       Get.put(HomeAnimationsController());
   int num = 0;
-  bool _isDark;
+  bool? _isDark;
   @override
   Widget build(BuildContext context) {
     final Brightness brightnessValue =
         MediaQuery.of(context).platformBrightness;
     _isDark = brightnessValue == Brightness.dark;
-    _isDark
+    _isDark ?? false
         ? setSystemUIOverlayStyle(
             systemUIOverlayStyle: SystemUIOverlayStyle.BLUE_DARK)
         : setSystemUIOverlayStyle(
@@ -31,14 +31,14 @@ class HomeScreen extends StatelessWidget {
     homeController.advancedDrawerController.addListener(() {
       Get.find<HomeController>().changeDrawerStatus();
       if (Get.find<HomeController>().drawerStatus == DrawerStatus.OPEN) {
-        _isDark
+        _isDark ?? false
             ? setSystemUIOverlayStyle(
                 systemUIOverlayStyle: SystemUIOverlayStyle.DARK)
             : setSystemUIOverlayStyle(
                 systemUIOverlayStyle: SystemUIOverlayStyle.BLUE);
       } else if (Get.find<HomeController>().drawerStatus ==
           DrawerStatus.CLOSE) {
-        _isDark
+        _isDark ?? false
             ? setSystemUIOverlayStyle(
                 systemUIOverlayStyle: SystemUIOverlayStyle.BLUE_DARK)
             : setSystemUIOverlayStyle(
@@ -49,7 +49,7 @@ class HomeScreen extends StatelessWidget {
     return GetBuilder<HomeController>(
       builder: (_) {
         return AdvancedDrawer(
-          backdropColor: _isDark ? kDarkBackgroundColor : kSecondaryColor,
+          backdropColor: _isDark ?? false ? kDarkBackgroundColor : kSecondaryColor,
           controller: homeController.advancedDrawerController,
           animationCurve: Curves.easeInOut,
           animationDuration: const Duration(milliseconds: 300),
@@ -62,7 +62,7 @@ class HomeScreen extends StatelessWidget {
           ),
           drawer: HomeDrawer(),
           child: Scaffold(
-            backgroundColor: _isDark ? kDarkBackgroundColor2 : kBackgroundColor,
+            backgroundColor: _isDark ?? false ? kDarkBackgroundColor2 : kBackgroundColor,
             body: SafeArea(
                 child: SingleChildScrollView(
               physics: BouncingScrollPhysics(),

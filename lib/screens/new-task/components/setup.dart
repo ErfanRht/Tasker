@@ -9,7 +9,7 @@ import '../../../controllers/new-task/newtask-controller.dart';
 
 class NewTaskSetup extends StatelessWidget {
   Duration _animationDuration = Duration(milliseconds: 500);
-  bool _isDark;
+  bool _isDark = false;
   @override
   Widget build(BuildContext context) {
     final Brightness brightnessValue =
@@ -78,7 +78,7 @@ class NewTaskSetup extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Icon(
+                        FaIcon(
                           FontAwesomeIcons.calendarMinus,
                           color: Colors.grey,
                         ),

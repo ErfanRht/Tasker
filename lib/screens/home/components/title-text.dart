@@ -8,7 +8,7 @@ import 'package:todo/screens/home/animations.dart';
 class HomeTitleText extends StatelessWidget {
   MainController mainController = Get.put(MainController());
   Duration _animationDuration = Duration(milliseconds: 750);
-  bool _isDark;
+  bool? _isDark;
   @override
   Widget build(BuildContext context) {
     final Brightness brightnessValue =
@@ -28,7 +28,7 @@ class HomeTitleText extends StatelessWidget {
                   text: "What's up, ",
                   style: GoogleFonts.ubuntu(
                     fontSize: 35,
-                    color: _isDark ? kBackgroundColor : Colors.black,
+                    color: _isDark ?? false ? kBackgroundColor : Colors.black,
                     fontWeight: FontWeight.w700,
                   ),
                   children: [
@@ -38,7 +38,7 @@ class HomeTitleText extends StatelessWidget {
                             fontWeight: FontWeight.w700,
                             fontSize: 35,
                             color:
-                                _isDark ? kBackgroundColor : kSecondaryColor)),
+                                _isDark ?? false ? kBackgroundColor : kSecondaryColor)),
                     TextSpan(text: '!'),
                   ],
                 ),

@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:todo/constants/colors.dart';
 import 'package:todo/constants/types.dart';
 
-setSystemUIOverlayStyle({@required SystemUIOverlayStyle systemUIOverlayStyle}) {
+setSystemUIOverlayStyle({required SystemUIOverlayStyle systemUIOverlayStyle}) {
   if (systemUIOverlayStyle == SystemUIOverlayStyle.DARK) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,

@@ -15,13 +15,13 @@ class HomeAnimationsController extends GetxController {
 
   // update void
   updateHomeAnimations(
-      {double newNavbarOpacity1,
-      double newNavbarOpacity2,
-      double newTitleOpacity,
-      double newTasksTitleOpacity,
-      double newNotFoundOpacity,
-      double newFloatingButtonOpacity,
-      EdgeInsets newTitlePadding}) {
+      {double? newNavbarOpacity1,
+      double? newNavbarOpacity2,
+      double? newTitleOpacity,
+      double? newTasksTitleOpacity,
+      double? newNotFoundOpacity,
+      double? newFloatingButtonOpacity,
+      EdgeInsets? newTitlePadding}) {
     navbarOpacity1 =
         newNavbarOpacity1 != null ? newNavbarOpacity1 : navbarOpacity1;
     navbarOpacity2 =

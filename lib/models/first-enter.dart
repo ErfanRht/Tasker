@@ -4,7 +4,7 @@ Future<bool> checkFirstEnter() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
 
   bool firstEnterStatus;
-  firstEnterStatus = prefs.getBool('first-enter');
+  firstEnterStatus = prefs.getBool('first-enter')!;
 
   if (firstEnterStatus == null) {
     firstEnterStatus = true;

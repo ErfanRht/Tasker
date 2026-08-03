@@ -10,7 +10,7 @@ Future<bool> checkUserEmail() async {
   return userNameStatus;
 }
 
-Future<bool> setUserEmail({@required String userEmail}) async {
+Future<bool?> setUserEmail({required String userEmail}) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   EmailValidation(email: userEmail).then((response) {
     if (response) {
@@ -23,17 +23,17 @@ Future<bool> setUserEmail({@required String userEmail}) async {
   });
 }
 
-Future<String> getUserEmail() async {
+Future<String?> getUserEmail() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  String userEmail = prefs.getString('user-email');
+  String? userEmail = prefs.getString('user-email');
   Get.find<MainController>().updateMainStete(newUserEmail: userEmail);
 
   return userEmail;
 }
 
 // ignore: non_constant_identifier_names
-Future<bool> EmailValidation({@required String email}) async {
-  Pattern pattern =
+Future<bool> EmailValidation({required String email}) async {
+  String pattern =
       r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
   RegExp regex = RegExp(pattern);
   if (!regex.hasMatch(email))

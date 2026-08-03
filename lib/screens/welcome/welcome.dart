@@ -7,7 +7,7 @@ import 'package:todo/screens/welcome/components/name.dart';
 import 'package:todo/screens/welcome/components/text.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  bool _isDark;
+  bool _isDark = false;
   @override
   Widget build(BuildContext context) {
     final Brightness brightnessValue =

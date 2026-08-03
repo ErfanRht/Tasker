@@ -9,11 +9,12 @@ class MainController extends GetxController {
   List tasks = [];
 
   updateMainStete(
-      {bool newFirstEnterStatus,
-      String newUserName,
-      String newUserEmail,
-      String newUserAge,
-      List newTasks}) {
+      {
+        bool? newFirstEnterStatus,
+      String? newUserName,
+      String? newUserEmail,
+      String? newUserAge,
+      List? newTasks}) {
     isFirstEnter =
         newFirstEnterStatus != null ? newFirstEnterStatus : isFirstEnter;
     userName = newUserName != null ? newUserName : userName;

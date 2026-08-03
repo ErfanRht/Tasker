@@ -5,17 +5,17 @@ import 'package:todo/constants/colors.dart';
 import 'package:todo/controllers/main-controller.dart';
 
 class WelcomeName extends StatefulWidget {
-  bool isDark;
-  WelcomeName({this.isDark});
+  bool isDark = false;
+  WelcomeName({required this.isDark});
   @override
   _WelcomeNameState createState() => _WelcomeNameState();
 }
 
 class _WelcomeNameState extends State<WelcomeName> {
-  bool isDark;
-  Duration _animationSpeed;
-  double _opacity;
-  EdgeInsets _padding;
+  bool isDark = false;
+  Duration? _animationSpeed;
+  double? _opacity;
+  EdgeInsets? _padding;
 
   @override
   void initState() {
@@ -31,8 +31,8 @@ class _WelcomeNameState extends State<WelcomeName> {
   @override
   Widget build(BuildContext context) {
     return AnimatedOpacity(
-      opacity: _opacity,
-      duration: _animationSpeed,
+      opacity: _opacity!,
+      duration: _animationSpeed!,
       child: Container(
         padding: EdgeInsets.only(
           left: 20,

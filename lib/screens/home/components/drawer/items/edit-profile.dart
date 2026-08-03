@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo/constants/colors.dart';
 import 'package:todo/controllers/home/drawer/edit-profile-controller.dart';
@@ -9,17 +10,17 @@ import 'package:todo/models/user/user.dart';
 class EditProfileDialog extends StatelessWidget {
   EditProfileController editProfileController =
       Get.put(EditProfileController());
-  bool _isDark;
+  bool? _isDark;
   @override
   Widget build(BuildContext context) {
     final Brightness brightnessValue =
         MediaQuery.of(context).platformBrightness;
-    _isDark = brightnessValue == Brightness.dark;
+    _isDark  = brightnessValue == Brightness.dark;
     return StatefulBuilder(builder: (BuildContext context, setState) {
       return GetBuilder<EditProfileController>(
         builder: (_) {
           return AlertDialog(
-            backgroundColor: _isDark ? kDarkBackgroundColor2 : kBackgroundColor,
+            backgroundColor: _isDark ?? false ? kDarkBackgroundColor2 : kBackgroundColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20),
             ),
@@ -28,7 +29,7 @@ class EditProfileDialog extends StatelessWidget {
               style: GoogleFonts.ubuntu(
                   fontSize: 22.5,
                   fontWeight: FontWeight.w600,
-                  color: _isDark ? kBackgroundColor : kDarkBackgroundColor),
+                  color: _isDark ?? false ? kBackgroundColor : kDarkBackgroundColor),
             ),
             content: Container(
               height: 220,
@@ -40,7 +41,7 @@ class EditProfileDialog extends StatelessWidget {
                         style: GoogleFonts.ubuntu(
                             fontSize: 20,
                             fontWeight: FontWeight.w700,
-                            color: _isDark
+                            color: _isDark ?? false
                                 ? kBackgroundColor.withOpacity(0.8)
                                 : kDarkBackgroundColor.withOpacity(0.8)),
                         decoration: InputDecoration(
@@ -52,7 +53,7 @@ class EditProfileDialog extends StatelessWidget {
                           hintStyle: GoogleFonts.ubuntu(
                               fontSize: 17.5,
                               fontWeight: FontWeight.w500,
-                              color: _isDark
+                              color: _isDark ?? false
                                   ? kBackgroundColor.withOpacity(0.8)
                                   : kDarkBackgroundColor.withOpacity(0.8)),
                         ),
@@ -64,14 +65,12 @@ class EditProfileDialog extends StatelessWidget {
                       height: 15,
                     ),
                     TextField(
-                        inputFormatters: [
-                          WhitelistingTextInputFormatter.digitsOnly
-                        ],
+                        inputFormatters : [ FilteringTextInputFormatter.digitsOnly],
                         keyboardType: TextInputType.number,
                         style: GoogleFonts.ubuntu(
                             fontSize: 20,
                             fontWeight: FontWeight.w700,
-                            color: _isDark
+                            color: _isDark ?? false
                                 ? kBackgroundColor.withOpacity(0.8)
                                 : kDarkBackgroundColor.withOpacity(0.8)),
                         decoration: InputDecoration(
@@ -83,7 +82,7 @@ class EditProfileDialog extends StatelessWidget {
                           hintStyle: GoogleFonts.ubuntu(
                               fontSize: 17.5,
                               fontWeight: FontWeight.w500,
-                              color: _isDark
+                              color: _isDark ?? false 
                                   ? kBackgroundColor.withOpacity(0.8)
                                   : kDarkBackgroundColor.withOpacity(0.8)),
                         ),
@@ -99,7 +98,7 @@ class EditProfileDialog extends StatelessWidget {
                         style: GoogleFonts.ubuntu(
                             fontSize: 20,
                             fontWeight: FontWeight.w700,
-                            color: _isDark
+                            color: _isDark ?? false
                                 ? kBackgroundColor.withOpacity(0.8)
                                 : kDarkBackgroundColor.withOpacity(0.8)),
                         decoration: InputDecoration(
@@ -114,7 +113,7 @@ class EditProfileDialog extends StatelessWidget {
                           hintStyle: GoogleFonts.ubuntu(
                               fontSize: 17.5,
                               fontWeight: FontWeight.w500,
-                              color: _isDark
+                              color: _isDark ?? false
                                   ? kBackgroundColor.withOpacity(0.8)
                                   : kDarkBackgroundColor.withOpacity(0.8)),
                         ),
@@ -132,7 +131,7 @@ class EditProfileDialog extends StatelessWidget {
                   ]),
             ),
             actions: [
-              FlatButton(
+              TextButton(
                 child: Text(
                   "Discard",
                   style: GoogleFonts.ubuntu(
@@ -145,13 +144,13 @@ class EditProfileDialog extends StatelessWidget {
                   Navigator.pop(context);
                 },
               ),
-              FlatButton(
+              TextButton(
                 child: Text(
                   "Save",
                   style: GoogleFonts.ubuntu(
                       fontSize: 14,
                       fontWeight: FontWeight.w500,
-                      color: _isDark
+                      color: _isDark ?? false
                           ? kBackgroundColor.withOpacity(0.9)
                           : kDarkBackgroundColor),
                 ),

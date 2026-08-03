@@ -20,9 +20,9 @@ class LoadingScreen extends StatefulWidget {
 class _LoadingScreenState extends State<LoadingScreen> {
   LoadingAnimationsController loadingAnimationsController =
       Get.put(LoadingAnimationsController());
-  String nextRoute;
-  bool isFirstEnter;
-  bool _isDark;
+  String? nextRoute;
+  bool? isFirstEnter;
+  bool _isDark = false;
   @override
   void initState() {
     super.initState();
@@ -73,7 +73,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
       );
       setState(() {
         isFirstEnter = !response;
-        if (isFirstEnter) {
+        if (isFirstEnter!) {
           nextRoute = welcome_route;
         } else {
           getTasks();
@@ -92,6 +92,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   pass() async {
     await Future.delayed(loadingAnimationsController.allAnimationTimes);
-    Navigator.pushReplacementNamed(context, nextRoute);
+    Navigator.pushReplacementNamed(context, nextRoute!);
   }
 }

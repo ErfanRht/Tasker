@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
-import 'package:circular_check_box/circular_check_box.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:ms_undraw/ms_undraw.dart';
 import 'package:todo/constants/colors.dart';
@@ -15,7 +14,7 @@ class HomeTasksItems extends StatefulWidget {
 }
 
 class _HomeTasksItemsState extends State<HomeTasksItems> {
-  bool _isDark;
+  bool? _isDark;
   @override
   Widget build(BuildContext context) {
     final Brightness brightnessValue =
@@ -51,7 +50,7 @@ class _HomeTasksItemsState extends State<HomeTasksItems> {
                         Text(
                           "You have no task for today!",
                           style: GoogleFonts.ubuntu(
-                              color: _isDark
+                              color: _isDark ?? false
                                   ? kBackgroundColor.withOpacity(0.8)
                                   : kSecondaryColor,
                               fontSize: 22.2,
@@ -61,14 +60,14 @@ class _HomeTasksItemsState extends State<HomeTasksItems> {
                           padding: EdgeInsets.only(left: 50, right: 50),
                           child: UnDraw(
                             height: MediaQuery.of(context).size.width - 100,
-                            color: _isDark
+                            color: _isDark ?? false
                                 ? kBackgroundColor.withOpacity(0.8)
                                 : kSecondaryColor,
                             illustration: UnDrawIllustration.not_found,
                             placeholder: Padding(
                               padding: EdgeInsets.only(top: 100),
                               child: SpinKitDoubleBounce(
-                                color: _isDark
+                                color: _isDark ?? false
                                     ? kBackgroundColor.withOpacity(0.8)
                                     : kSecondaryColor,
                                 size: 75,

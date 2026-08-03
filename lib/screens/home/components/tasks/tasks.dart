@@ -8,7 +8,7 @@ import 'package:todo/screens/home/components/tasks/items.dart';
 
 class HomeTasks extends StatelessWidget {
   Duration _animationDuration = Duration(milliseconds: 500);
-  bool _isDark;
+  bool? _isDark;
   @override
   Widget build(BuildContext context) {
     final Brightness brightnessValue =
@@ -32,7 +32,7 @@ class HomeTasks extends StatelessWidget {
                       style: TextStyle(
                           fontSize: 12.5,
                           fontWeight: FontWeight.bold,
-                          color: _isDark
+                          color: _isDark ?? false 
                               ? kBackgroundColor.withOpacity(0.5)
                               : Colors.black.withOpacity(0.3)),
                     ),
@@ -44,9 +44,9 @@ class HomeTasks extends StatelessWidget {
                       duration: _animationDuration,
                       opacity: _.tasksTitleOpacity,
                       child: IconButton(
-                          icon: Icon(FontAwesomeIcons.checkDouble,
+                          icon: FaIcon(FontAwesomeIcons.checkDouble,
                               size: 22.5,
-                              color: _isDark
+                              color: _isDark ?? false
                                   ? kBackgroundColor.withOpacity(0.5)
                                   : Colors.black.withOpacity(0.3)),
                           onPressed: () async {

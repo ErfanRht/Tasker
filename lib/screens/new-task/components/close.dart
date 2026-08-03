@@ -8,7 +8,7 @@ import 'package:todo/screens/new-task/animations.dart';
 
 class NewTaskCloseButton extends StatelessWidget {
   Duration _animationDuration = Duration(milliseconds: 500);
-  bool _isDark;
+  bool _isDark = false;
   @override
   Widget build(BuildContext context) {
     final Brightness brightnessValue =
@@ -25,7 +25,7 @@ class NewTaskCloseButton extends StatelessWidget {
             children: [
               Container(
                 child: GestureDetector(
-                  child: Icon(FontAwesomeIcons.timesCircle,
+                  child: FaIcon(FontAwesomeIcons.circleXmark,
                       size: 50,
                       color: _isDark
                           ? kBackgroundColor

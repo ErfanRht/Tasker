@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:rounded_loading_button/rounded_loading_button.dart';
+import 'package:rounded_loading_button_plus/rounded_loading_button.dart';
 import 'package:todo/constants/colors.dart';
 import 'package:todo/controllers/new-task/newtask-controller.dart';
 import 'package:todo/models/tasks.dart';
@@ -20,13 +20,13 @@ class _NewTaskButtonState extends State<NewTaskButton> {
 
   @override
   bool get wantKeepAlive => true;
-  bool _isDark;
+  bool _isDark = false;
   @override
   Widget build(BuildContext context) {
     final Brightness brightnessValue =
         MediaQuery.of(context).platformBrightness;
     _isDark = brightnessValue == Brightness.dark;
-    void _add({@required NewTaskController newTaskController}) async {
+    void _add({required NewTaskController newTaskController}) async {
       addTask(
               text: newTaskController.text,
               colorNum: newTaskController.colorNum)
@@ -77,7 +77,7 @@ class _NewTaskButtonState extends State<NewTaskButton> {
                                   fontSize: 20,
                                   fontWeight: FontWeight.w700)),
                           SizedBox(width: 10),
-                          Icon(
+                          FaIcon(
                             FontAwesomeIcons.chevronUp,
                             size: 20,
                             color:

@@ -11,7 +11,7 @@ Future<bool> checkUserName() async {
   return userNameStatus;
 }
 
-Future<bool> setUserName({@required String userName}) async {
+Future<bool> setUserName({required String userName}) async {
   if (userName == null ||
       userName == "" ||
       userName == " " ||
@@ -29,9 +29,9 @@ Future<bool> setUserName({@required String userName}) async {
   }
 }
 
-Future<String> getUserName() async {
+Future<String?> getUserName() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  String userName = prefs.getString('user-name');
+  String? userName = prefs.getString('user-name');
   Get.find<MainController>().updateMainStete(newUserName: userName);
 
   return userName;
